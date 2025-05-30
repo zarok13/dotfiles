@@ -1,0 +1,12 @@
+[window]
+opacity = 0.6
+
+[[keyboard.bindings]]
+key = "Copy"
+mods = "None"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "V"
+mods = "Control|Shift"
+action = "Paste"
