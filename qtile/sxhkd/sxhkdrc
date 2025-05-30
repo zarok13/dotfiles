@@ -1,0 +1,146 @@
+#################################################################
+# KEYBOARD BINDINGS FOR ANY TWM
+#################################################################
+
+#################################################################
+# SUPER + FUNCTION KEYS
+#################################################################
+
+
+#Thunar
+super + F8
+    thunar
+
+#Rofi Fullscreen
+super + F11
+    rofi -theme-str 'window \{width: 100%;height: 100%;\}' -show drun
+
+#Rofi
+super + F12
+    rofi -show drun
+
+#################################################################
+# SUPER + ... KEYS
+#################################################################
+
+#Pavucontrol
+super + v
+    pavucontrol
+
+#Xkill
+super + Escape
+    xkill
+
+#################################################################
+# SUPER + SHIFT KEYS
+#################################################################
+
+#dmenu
+super + shift + d
+	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+    
+#dmenu
+super + d
+    rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launcher9.rasi
+
+#reload sxhkd:
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+
+#################################################################
+# CONTROL + ALT KEYS
+#################################################################
+
+#File-Manager
+ctrl + alt + f
+     thunar
+
+#Nitrogen
+ctrl + alt + i
+     nitrogen
+
+#Xfce4-settings-manager
+ctrl + alt + m
+     xfce4-settings-manager
+
+#Pulse Audio Control
+ctrl + alt + u
+     pavucontrol
+
+#Rofi theme selector
+ctrl + alt + r
+  rofi-theme-selector
+
+#alacritty
+ctrl + alt + t
+	alacritty
+
+#################################################################
+# CONTROL + SHIFT KEYS
+#################################################################
+
+#Xcfe4-TaskManager
+ctrl + shift + Escape
+	gnome-system-monitor
+
+#################################################################
+#     SCREENSHOTS
+#################################################################
+
+#flameshoot
+ctrl + Print
+     flameshoot gui
+
+#################################################################
+#     MULTIMEDIA KEYS
+#################################################################
+
+#Raises volume
+XF86AudioRaiseVolume
+    amixer set Master 5%+
+
+#Lowers volume
+XF86AudioLowerVolume
+    amixer set Master 5%-
+
+#Mute
+XF86AudioMute
+    amixer -D pulse set Master 1+ toggle
+
+
+#Playerctl works for Pragha, Spotify and others
+#Delete the line for playerctl if you want to use mpc
+#and replace it with the corresponding code
+#mpc works for e.g.ncmpcpp
+#mpc toggle
+#mpc next
+#mpc prev
+#mpc stop
+
+#PLAY
+XF86AudioPlay
+    playerctl play-pause
+
+#Next
+XF86AudioNext
+    playerctl next
+
+#previous
+XF86AudioPrev
+    playerctl previous
+
+#Stop
+XF86AudioStop
+    playerctl stop
+
+#Brightness up
+#XF86MonBrightnessUp
+#    brightnessctl set +5%
+
+#Brightness down
+#XF86MonBrightnessDown
+#    brightnessctl set -5%
+
+super + F5
+    brave-bworser
