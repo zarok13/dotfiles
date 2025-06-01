@@ -26,7 +26,7 @@
 
 import os, subprocess, sys, importlib    
 from libqtile import qtile, layout, widget, bar, hook 
-from libqtile.config import Click, Drag, Group, Key, Match, Screen #, KeyChord
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown #, KeyChord
 from libqtile.lazy import lazy
 from qtile_extras.popup import (
     PopupRelativeLayout,
@@ -41,7 +41,7 @@ from qtile_extras.widget.decorations import (
 )
 from scripts import colors
 from scripts import microphone, nightlights
-#from libqtile.config import ScratchPad, DropDown
+
 
 scripts_dir = 'scripts.'
 #colors = colors.GruvBox
@@ -237,7 +237,7 @@ keys = [
     #    Key([], "c", lazy.spawn("gedit .config/qtile/config.py"), desc='qtile config'),
     #])
     
-    #Key([], 'F11', lazy.group['scratchpad'].dropdown_toggle('term')),
+    Key([], 'F12', lazy.group['scratchpad'].dropdown_toggle(terminal)),
 
 ]
 
@@ -256,13 +256,6 @@ for i in range(len(group_names)):
             label=group_labels[i],
         ))
 
-''' 
-groups.append(
-    ScratchPad("scratchpad", [
-        DropDown("term", "alacritty", opacity=0.8),
-        DropDown("qtile-shell", "alacritty -e qtile shell", opacity=0.9),
-]))
-'''
 
 for i in groups:
     keys.extend(
@@ -291,6 +284,11 @@ for i in groups:
              ),
         ]
     )
+    
+groups.append(
+    ScratchPad("scratchpad", [
+        DropDown(terminal, terminal, height = 0.9),
+]))
 
 layout_theme = {"border_width": 4,
 	"margin": 12,
