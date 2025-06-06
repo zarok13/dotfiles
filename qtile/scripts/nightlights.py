@@ -22,8 +22,10 @@ def status():
 def toggle():
     if is_enabled():
         os.system("pkill gammastep")
+        os.system("notify-send -t 5000 'Nightlight Disabled'")
     else:
         os.system("gammastep -c ~/.config/gammastep/gammastep.conf &")
+        os.system("notify-send -t 5000 'Nightlight Enabled'")
 
 
 
