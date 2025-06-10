@@ -237,7 +237,7 @@ keys = [
     #    Key([], "c", lazy.spawn("gedit .config/qtile/config.py"), desc='qtile config'),
     #])
     
-    Key([], 'F12', lazy.group['scratchpad'].dropdown_toggle(terminal)),
+    Key([], 'F9', lazy.group['scratchpad'].dropdown_toggle(terminal)),
 
 ]
 
