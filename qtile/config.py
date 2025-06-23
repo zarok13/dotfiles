@@ -71,7 +71,143 @@ def maximize_by_switching_layout(qtile):
         qtile.current_group.layout = 'max'
     elif current_layout_name == 'max':
         qtile.current_group.layout = 'monadtall'
-        
+    
+##### MOUSE CALLBACKS #####
+def open_rofi_advanced():
+    qtile.spawn("rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launcher9.rasi")
+def open_settings():
+    qtile.spawn("xfce4-settings-manager")
+def open_powermenu():
+    qtile.spawn("./.config/rofi/powermenu/type-1/powermenu.sh")
+   
+def update_widget(name, action):
+    module = importlib.import_module(scripts_dir + name)
+    func = getattr(module, action)
+    func()
+    def update_nightlight_widget(widget):
+        def _update():
+            widget.text = module.status()
+            widget.bar.draw()
+        qtile.call_later(5, _update)
+    for screen in qtile.screens:
+        for widget in getattr(screen.top, 'widgets', []):
+            if getattr(widget, 'name', '') == name:
+                if name == 'nightlights':
+                    update_nightlight_widget(widget)
+                else:
+                    widget.foreground = module.color()
+                    widget.text = module.status()
+                    widget.bar.draw()
+                    
+@lazy.function   
+def show_power_menu(qtile):
+    controls = [
+        PopupImage(
+            filename="~/.config/qtile/icons/ubuntu-logo.png",
+            pos_x=0.05,
+            pos_y=0.1,
+            width=0.1,
+            height=0.5,
+            mouse_callbacks={
+                "Button1": lazy.spawn("i3lock")
+            },
+        ),
+        PopupImage(
+            filename="~/.config/qtile/icons/ubuntu-logo.png",
+            pos_x=0.25,
+            pos_y=0.1,
+            width=0.1,
+            height=0.5,
+            mouse_callbacks={
+                "Button1": lazy.spawn("./.config/qtile/scripts/lock_and_suspend.sh")
+            }
+        ),
+        PopupImage(
+            filename="~/.config/qtile/icons/ubuntu-logo.png",
+            pos_x=0.45,
+            pos_y=0.1,
+            width=0.1,
+            height=0.5,
+            highlight="A00000",
+            mouse_callbacks={
+                "Button1": lazy.spawn("qtile cmd-obj -o cmd -f shutdown")
+            }
+        ),
+        PopupImage(
+            filename="~/.config/qtile/icons/ubuntu-logo.png",
+            pos_x=0.65,
+            pos_y=0.1,
+            width=0.1,
+            height=0.5,
+            highlight="A00000",
+            mouse_callbacks={
+                "Button1": lazy.spawn("systemctl reboot")
+            }
+        ),
+        PopupImage(
+            filename="~/.config/qtile/icons/ubuntu-logo.png",
+            pos_x=0.85,
+            pos_y=0.1,
+            width=0.1,
+            height=0.5,
+            highlight="A00000",
+            mouse_callbacks={
+                "Button1": lazy.spawn("systemctl poweroff")
+            }
+        ),
+        PopupText(
+            text="Lock",
+            pos_x=0.05,
+            pos_y=0.7,
+            width=0.1,
+            height=0.1,
+            h_align="center"
+        ),
+        PopupText(
+            text="Sleep",
+            pos_x=0.25,
+            pos_y=0.7,
+            width=0.1,
+            height=0.2,
+            h_align="center"
+        ),
+        PopupText(
+            text="Logout",
+            pos_x=0.45,
+            pos_y=0.7,
+            width=0.1,
+            height=0.2,
+            h_align="center"
+        ),
+        PopupText(
+            text="Restart",
+            pos_x=0.65,
+            pos_y=0.7,
+            width=0.1,
+            height=0.2,
+            h_align="center"
+        ),
+        PopupText(
+            text="Shutdown",
+            pos_x=0.85,
+            pos_y=0.7,
+            width=0.1,
+            height=0.2,
+            h_align="center"
+        ),
+    ]
+
+    layout = PopupRelativeLayout(
+        qtile,
+        width=1000,
+        height=200,
+        controls=controls,
+        background="00000060",
+        initial_focus=None,
+    )
+
+    layout.show(centered=True)
+    
 ### qtile_extras ###
 arrow_powerlineRight = {
     "decorations": [
@@ -141,7 +277,8 @@ keys = [
     Key([mod], "b", lazy.hide_show_bar(position='all'), desc="Toggles the bar to show/hide"),
     Key([mod], "m", lazy.layout.maximize(), desc='Toggle between min and max sizes'),
     Key([mod], "t", lazy.window.toggle_floating(), desc='toggle floating'),
-    Key([mod], "x", lazy.spawn("./.config/rofi/powermenu/type-1/powermenu.sh"), desc='Power Menu'),
+    #Key([mod], "x", lazy.spawn("./.config/rofi/powermenu/type-1/powermenu.sh"), desc='Power Menu'),
+    Key([mod], "x", show_power_menu(), desc='Power Menu'),
     Key([mod], "c", lazy.spawn("gedit .config/qtile/config.py"), desc='qtile config'),
     
     ### change focus ###
@@ -323,33 +460,6 @@ widget_defaults = dict(
     background=colors[0]
 )
 extension_defaults = widget_defaults.copy()
-
-##### MOUSE CALLBACKS #####
-def open_rofi_advanced():
-    qtile.spawn("rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launcher9.rasi")
-def open_settings():
-    qtile.spawn("xfce4-settings-manager")
-def open_powermenu():
-    qtile.spawn("./.config/rofi/powermenu/type-1/powermenu.sh")
-   
-def update_widget(name, action):
-    module = importlib.import_module(scripts_dir + name)
-    func = getattr(module, action)
-    func()
-    def update_nightlight_widget(widget):
-        def _update():
-            widget.text = module.status()
-            widget.bar.draw()
-        qtile.call_later(5, _update)
-    for screen in qtile.screens:
-        for widget in getattr(screen.top, 'widgets', []):
-            if getattr(widget, 'name', '') == name:
-                if name == 'nightlights':
-                    update_nightlight_widget(widget)
-                else:
-                    widget.foreground = module.color()
-                    widget.text = module.status()
-                    widget.bar.draw()
                 
 
 ##### WIDGETS #####
@@ -512,7 +622,7 @@ def init_widgets_screen1():
         widget.Image(
             filename = "~/.config/qtile/icons/powermenu.png",
             scale = "False",
-            mouse_callbacks = {'Button1': open_powermenu },
+            mouse_callbacks = {'Button1': show_power_menu },
             background = colors[1]
         )
     )
