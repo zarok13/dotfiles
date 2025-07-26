@@ -1,5 +1,10 @@
+set -e fish_user_paths
+set -U fish_user_paths $HOME/.bin  $HOME/.local/bin /var/lib/flatpak/exports/bin/ $fish_user_paths
+
+
+set fish_greeting
+
 if status is-interactive
-    # Commands to run in interactive sessions can go here
 end
 
 alias gs='git status'
