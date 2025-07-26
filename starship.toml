@@ -1,5 +1,6 @@
 format = """
 [](#3B4252)\
+$shell\
 $php\
 $python\
 $username\
@@ -15,6 +16,13 @@ $docker_context\
 $time\
 [ ](fg:#33658A)\
 """
+[shell]
+style = "bg:#3B4252"
+disabled = false
+bash_indicator = ' '
+fish_indicator = '󰈺 '
+zsh_indicator = ' '
+format = '[$indicator ]($style)'
 
 [username]
 show_always = true
