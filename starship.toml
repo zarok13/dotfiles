@@ -1,5 +1,6 @@
 format = """
 [](#3B4252)\
+$php\
 $python\
 $username\
 [](bg:#434C5E fg:#3B4252)\
@@ -49,7 +50,11 @@ format = '[ $symbol $context ]($style)$path'
 
 [python]
 style = "bg:#3B4252"
-format = '[(\($virtualenv\) )]($style)'
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[php]
+style = "bg:#3B4252"
+format = '[$symbol($version )]($style)'
 
 [time]
 disabled = false
