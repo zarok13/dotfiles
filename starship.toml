@@ -1,23 +1,23 @@
 format = """
-[](#3B4252)\
+[](#282828)\
 $shell\
 $php\
 $python\
 $username\
-[](bg:#434C5E fg:#3B4252)\
+[](bg:#504945 fg:#282828)\
 $directory\
-[](fg:#434C5E bg:#4C566A)\
+[](fg:#504945 bg:#7c6f64)\
 $git_branch\
 $git_status\
-[](fg:#4C566A bg:#86BBD8)\
+[](fg:#7c6f64 bg:#86BBD8)\
 [](fg:#86BBD8 bg:#06969A)\
 $docker_context\
-[](fg:#06969A bg:#33658A)\
+[](fg:#06969A bg:#458588)\
 $time\
-[ ](fg:#33658A)\
+[ ](fg:#458588)\
 """
 [shell]
-style = "bg:#3B4252"
+style = "bg:#282828 fg:#cc241d"
 disabled = false
 bash_indicator = ' '
 fish_indicator = '󰈺 '
@@ -26,12 +26,12 @@ format = '[$indicator ]($style)'
 
 [username]
 show_always = true
-style_user = "bg:#3B4252"
-style_root = "bg:#3B4252"
+style_user = "bg:#282828 fg:#cc241d bold"
+style_root = "bg:#282828  fg:#cc241d bold"
 format = '[$user ]($style)'
 
 [directory]
-style = "bg:#434C5E"
+style = "bg:#504945 fg:#fabd2f bold"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -44,11 +44,11 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#4C566A"
+style = "bg:#7c6f64 fg:#b8bb26 bold"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#4C566A"
+style = "bg:#7c6f64 fg:#b8bb26 bold"
 format = '[$all_status$ahead_behind ]($style)'
 
 [docker_context]
@@ -57,16 +57,16 @@ style = "bg:#06969A"
 format = '[ $symbol $context ]($style)$path'
 
 [python]
-style = "bg:#3B4252"
+style = "bg:#282828 fg:#cc241d bold"
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [php]
-style = "bg:#3B4252"
+style = "bg:#282828 fg:#cc241d bold"
 format = '[$symbol($version )]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
+style = "bg:#458588 fg:#fbf1c7 bold"
 format = '[ $time ]($style)'
 
