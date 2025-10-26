@@ -48,6 +48,8 @@ song_status_format = " $6%a $7⟫⟫ $3%t $7⟫⟫ $4%b "
 visualizer_type = "spectrum"
 visualizer_in_stereo = "yes"
 visualizer_look = "◆▋"
+#visualizer_look = "+|"
+
 
 startup_screen = playlist
 #startup_screen = visualizer
