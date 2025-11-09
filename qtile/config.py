@@ -40,7 +40,10 @@ from qtile_extras.widget.decorations import (
     RectDecoration,
 )
 from scripts import colors
-from scripts import microphone, nightlights
+#from scripts import microphone, nightlights
+from scripts import nightlights
+
+
 
 
 scripts_dir = 'scripts.'
@@ -541,21 +544,22 @@ def init_widgets_list():
              mouse_callbacks = { "Button1": lambda: update_widget('nightlights', 'toggle'), },
  	 	     **arrow_powerlineRight,
         ), 
-        widget.TextBox(
-    	     name = 'microphone',
-             text = microphone.status(),
-             font = "Ubuntu Mono",
-             fontsize = 16,
-             foreground = microphone.color(),
-             padding = 6,
-             fmt = '{}',
-             mouse_callbacks = { 
-             	 "Button1": lambda: update_widget('microphone', 'toggle'),
-             	 "Button4": lambda: update_widget('microphone', 'increase_mic_volume'),
-             	 "Button5": lambda: update_widget('microphone', 'decrease_mic_volume'),
-     	 	 },
- 	 	     **arrow_powerlineRight,
-        ), 
+
+        #widget.TextBox(
+    	#     name = 'microphone',
+        #     text = microphone.status(),
+        #     font = "Ubuntu Mono",
+        #     fontsize = 16,
+        #     foreground = microphone.color(),
+        #     padding = 6,
+        #     fmt = '{}',
+        #     mouse_callbacks = { 
+        #     	 "Button1": lambda: update_widget('microphone', 'toggle'),
+        #     	 "Button4": lambda: update_widget('microphone', 'increase_mic_volume'),
+        #     	 "Button5": lambda: update_widget('microphone', 'decrease_mic_volume'),
+     	# 	 },
+ 	 	#     **arrow_powerlineRight,
+        #), 
         widget.Volume(
 	         fontsize = 16,
              foreground = colors[0],
