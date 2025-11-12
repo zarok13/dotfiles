@@ -40,15 +40,14 @@ from qtile_extras.widget.decorations import (
     RectDecoration,
 )
 from scripts import colors
-#from scripts import microphone, nightlights
-from scripts import nightlights
-
+from scripts import microphone
+from libqtile.log_utils import logger
 
 
 
 scripts_dir = 'scripts.'
-#colors = colors.GruvBox
-colors = colors.DoomOne
+colors = colors.GruvBox
+#colors = colors.DoomOne
 mod = "mod4"
 alt = "mod1"
 terminal = "alacritty"
@@ -82,31 +81,22 @@ def open_settings():
     qtile.spawn("xfce4-settings-manager")
 def open_powermenu():
     qtile.spawn("./.config/rofi/powermenu/type-1/powermenu.sh")
-   
+
 def update_widget(name, action):
     module = importlib.import_module(scripts_dir + name)
     func = getattr(module, action)
     func()
-    def update_nightlight_widget(widget):
-        def _update():
-            widget.text = module.status()
-            widget.bar.draw()
-        qtile.call_later(5, _update)
     for screen in qtile.screens:
         for widget in getattr(screen.top, 'widgets', []):
             if getattr(widget, 'name', '') == name:
-                if name == 'nightlights':
-                    update_nightlight_widget(widget)
-                else:
-                    widget.foreground = module.color()
-                    widget.text = module.status()
-                    widget.bar.draw()
+                widget.text = f'<span foreground="{module.color()}">{module.status()}</span>'
+                widget.bar.draw()
                     
 @lazy.function   
 def show_power_menu(qtile):
     controls = [
         PopupImage(
-            filename="~/.config/qtile/icons/ubuntu-logo.png",
+            filename="~/.config/qtile/icons/face.png",
             pos_x=0.05,
             pos_y=0.1,
             width=0.1,
@@ -116,7 +106,7 @@ def show_power_menu(qtile):
             },
         ),
         PopupImage(
-            filename="~/.config/qtile/icons/ubuntu-logo.png",
+            filename="~/.config/qtile/icons/face.png",
             pos_x=0.25,
             pos_y=0.1,
             width=0.1,
@@ -126,7 +116,7 @@ def show_power_menu(qtile):
             }
         ),
         PopupImage(
-            filename="~/.config/qtile/icons/ubuntu-logo.png",
+            filename="~/.config/qtile/icons/face.png",
             pos_x=0.45,
             pos_y=0.1,
             width=0.1,
@@ -137,7 +127,7 @@ def show_power_menu(qtile):
             }
         ),
         PopupImage(
-            filename="~/.config/qtile/icons/ubuntu-logo.png",
+            filename="~/.config/qtile/icons/face.png",
             pos_x=0.65,
             pos_y=0.1,
             width=0.1,
@@ -148,7 +138,7 @@ def show_power_menu(qtile):
             }
         ),
         PopupImage(
-            filename="~/.config/qtile/icons/ubuntu-logo.png",
+            filename="~/.config/qtile/icons/face.png",
             pos_x=0.85,
             pos_y=0.1,
             width=0.1,
@@ -431,7 +421,7 @@ groups.append(
 
 layout_theme = {"border_width": 4,
 	"margin": 12,
-	"border_focus": colors[8],
+	"border_focus": colors[9],
 	"border_normal": colors[0]
 }
 
@@ -457,7 +447,8 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="Ubuntu Sans Mono",
+    #font="Ubuntu Sans Mono",
+    font="Noto Sans",
     fontsize=12,
     padding=3,
     background=colors[0]
@@ -470,13 +461,13 @@ def init_widgets_list():
     widgets_list = [
         widget.Spacer(length = 12),
         widget.Image(
-             filename = "~/.config/qtile/icons/ubuntu-logo.png",
+             filename = "~/.config/qtile/icons/face.png",
              scale = "False",
              mouse_callbacks = {'Button1': open_rofi_advanced },
              **slash_powerlineRight,
         ),
         widget.Prompt(
-             font = "Ubuntu Mono",
+             font = "Noto Sans",
              fontsize=14,
              foreground = colors[1]
         ),
@@ -490,17 +481,17 @@ def init_widgets_list():
              active = colors[8],
              inactive = colors[1],
              rounded = False,
-             highlight_color = colors[9],
+             highlight_color = colors[4],
              highlight_method = "line",
-             this_current_screen_border = colors[4],
+             this_current_screen_border = colors[2],
              this_screen_border = colors [8],
-             other_current_screen_border = colors[4],
+             other_current_screen_border = colors[2],
              other_screen_border = colors[8],
              disable_drag = True,
         ),
         widget.TextBox(
              text = '|',
-             font = "Ubuntu Mono",
+             font = "Noto Sans",
              foreground = colors[9],
              #background = "#00000000",
              padding = 2,
@@ -529,37 +520,26 @@ def init_widgets_list():
              update_interval = 7200, # every 2 hours
              fmt = ' {}',
              func = lambda: subprocess.check_output(["~/.config/qtile/scripts/check-updates.sh"], shell=True, text=True),
-             mouse_callbacks={
-                 "Button1": lambda: qtile.spawn("update-manager")
-             },
+             #mouse_callbacks={
+             #    "Button1": lambda: qtile.spawn("update-manager")
+             #},
              **arrow_powerlineRight,
         ),
         widget.TextBox(
-             name = 'nightlights',
-             text = nightlights.status(),
-             background = colors[9],
-             font = "Ubuntu Mono",
-             fontsize = 18,
+    	     name = 'microphone',
+             text = microphone.status(),
+             font = "Noto Sans",
+             fontsize = 16,
+             foreground = microphone.color(),
              padding = 6,
-             mouse_callbacks = { "Button1": lambda: update_widget('nightlights', 'toggle'), },
+             fmt = '{}',
+             mouse_callbacks = { 
+             	 "Button1": lambda: update_widget('microphone', 'toggle'),
+             	 "Button4": lambda: update_widget('microphone', 'increase_mic_volume'),
+             	 "Button5": lambda: update_widget('microphone', 'decrease_mic_volume'),
+     	 	 },
  	 	     **arrow_powerlineRight,
         ), 
-
-        #widget.TextBox(
-    	#     name = 'microphone',
-        #     text = microphone.status(),
-        #     font = "Ubuntu Mono",
-        #     fontsize = 16,
-        #     foreground = microphone.color(),
-        #     padding = 6,
-        #     fmt = '{}',
-        #     mouse_callbacks = { 
-        #     	 "Button1": lambda: update_widget('microphone', 'toggle'),
-        #     	 "Button4": lambda: update_widget('microphone', 'increase_mic_volume'),
-        #     	 "Button5": lambda: update_widget('microphone', 'decrease_mic_volume'),
-     	# 	 },
- 	 	#     **arrow_powerlineRight,
-        #), 
         widget.Volume(
 	         fontsize = 16,
              foreground = colors[0],
@@ -705,8 +685,8 @@ auto_minimize = True
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = None
 # xcursor theme (string or None) and size (integer) for Wayland backend
-wl_xcursor_theme = None
-wl_xcursor_size = 24
+wl_xcursor_theme = "Qogir"
+wl_xcursor_size = 30
 
 @hook.subscribe.startup_once
 def autostart():

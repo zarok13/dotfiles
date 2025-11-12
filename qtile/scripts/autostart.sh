@@ -27,6 +27,8 @@ run sxhkd -c $HOME/.config/qtile/sxhkd/sxhkdrc &
 run picom -b &
 run nitrogen --restore &
 run flameshot &
+run firewall-applet &
+run gammastep-indicator &
 run lxpolkit &
 #feh --bg-fill $HOME/Pictures/wallpapers2/0001.jpg
 

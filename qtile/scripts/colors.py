@@ -1,8 +1,12 @@
-Microphone = [
-    ["#da8548", "#da8548"],
-    ["#ff0000", '#ff0000']
-]
+#Microphone = [
+#    ["#da8548", "#da8548"],
+#    ["#ff0000", '#ff0000']
+#]
 
+Microphone = [
+    "#da8548",
+    "#ff0000"
+]
 
 GruvBox = [
     ["#282828", "#282828"],  #background (dark grey) [0]
