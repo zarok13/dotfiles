@@ -16,6 +16,7 @@ $docker_context\
 $time\
 [ ](fg:#458588)\
 """
+
 [shell]
 style = "bg:#282828 fg:#cc241d"
 disabled = false

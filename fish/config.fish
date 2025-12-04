@@ -12,3 +12,4 @@ alias gs='git status'
 alias gac='git add . && git commit -m'
 
 starship init fish | source
+set -gx EDITOR vim
