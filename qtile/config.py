@@ -91,7 +91,25 @@ def update_widget(name, action):
             if getattr(widget, 'name', '') == name:
                 widget.text = f'<span foreground="{module.color()}">{module.status()}</span>'
                 widget.bar.draw()
-                    
+
+def get_updates(widget_name):
+    try:
+        system_updates = os.path.expanduser("~/.config/qtile/scripts/check-updates.sh")
+        count = subprocess.check_output(
+            [system_updates],
+            text=True,
+        ).strip()
+        for screen in qtile.screens:
+            for widget in getattr(screen.top, 'widgets', []):
+                if getattr(widget, 'name', '') == widget_name:
+                    widget.text = f' {count}'
+                    widget.bar.draw()
+    except subprocess.CalledProcessError:
+        return ' Error'
+    except FileNotFoundError:
+        return ' Script Not Found'
+
+                
 @lazy.function   
 def show_power_menu(qtile):
     controls = [
@@ -373,7 +391,7 @@ keys = [
 
 groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-group_labels = ["", "", "", "", "", "", "", "", "⛨"]
+group_labels = [" ", " ", " ", " ", " ", " ", " ", " ", "⛨"]
 #group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 group_layouts = ["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall"]
 
@@ -512,17 +530,17 @@ def init_widgets_list():
              fontsize = 16,
              **arrow_powerlineRight,
         ),
-        widget.GenPollText(
+        widget.TextBox(
+             name = 'system_updates',
              foreground = colors[0],
              background = colors[4],
              padding = 6,
              fontsize = 16,
-             update_interval = 7200, # every 2 hours
              fmt = ' {}',
-             func = lambda: subprocess.check_output(["~/.config/qtile/scripts/check-updates.sh"], shell=True, text=True),
-             #mouse_callbacks={
-             #    "Button1": lambda: qtile.spawn("update-manager")
-             #},
+             #func = lambda: subprocess.check_output(["~/.config/qtile/scripts/check-updates.sh"], shell=True, text=True),
+             mouse_callbacks={
+                 "Button1": lambda: get_updates('system_updates')
+             },
              **arrow_powerlineRight,
         ),
         widget.TextBox(

@@ -1,4 +1,5 @@
 import os, subprocess
+from subprocess import CalledProcessError
 from . import colors
 #from libqtile.log_utils import logger
 
@@ -64,16 +65,17 @@ def get_volume():
     return volume + '%'
 
 def is_muted():
-    # Use the alias for reliability
-    result = subprocess.run(
-        ["pactl", "get-source-mute", default_source_alias],
-        capture_output=True,
-        text=True,
-        check=True
-    )
-    status_output = result.stdout.strip()
-    # Check if the output string explicitly contains 'Mute: yes'
-    return status_output == 'Mute: yes'
+    try:
+        result = subprocess.run(
+            ["pactl", "get-source-mute", default_source_alias],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        status_output = result.stdout.strip()
+        return status_output == 'Mute: yes'
+    except CalledProcessError as e:
+        return True
 
 def status():
     # Ensure colors module is handled correctly by your environment

@@ -8,7 +8,7 @@ function run {
 }
 
 #mouse settings values range from -1 (slowest) to 1 (fastest).
-#xinput set-prop "pointer:PIXART HP Wireless Keyboard and Mouse" "libinput Accel Speed" -0.5
+xinput set-prop "pointer:Logitech Wireless Mouse" "libinput Accel Speed" -0.5
 
 #monitors setting HDMI-1 after primary-2
 xrandr --newmode "1440x900" 106.50 1440 1528 1672 1904 900 903 909 934 -hsync +vsync
