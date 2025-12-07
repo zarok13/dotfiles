@@ -41,7 +41,7 @@ from qtile_extras.widget.decorations import (
 )
 from scripts import colors
 from scripts import microphone
-from libqtile.log_utils import logger
+#from libqtile.log_utils import logger
 
 
 
@@ -120,7 +120,7 @@ def show_power_menu(qtile):
             width=0.1,
             height=0.5,
             mouse_callbacks={
-                "Button1": lazy.spawn("i3lock")
+                "Button1": lazy.spawn("betterlockscreen -l")
             },
         ),
         PopupImage(
@@ -130,7 +130,7 @@ def show_power_menu(qtile):
             width=0.1,
             height=0.5,
             mouse_callbacks={
-                "Button1": lazy.spawn("./.config/qtile/scripts/lock_and_suspend.sh")
+                "Button1": lazy.spawn("systemctl suspend")
             }
         ),
         PopupImage(
