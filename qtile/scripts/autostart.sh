@@ -23,7 +23,7 @@ run xfce4-power-manager &
 run blueman-applet &
 run nm-applet &
 run conky -d
-run sxhkd -c $HOME/.config/qtile/sxhkd/sxhkdrc &
+run sxhkd -c &
 run picom -b &
 run nitrogen --restore &
 run flameshot &

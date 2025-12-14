@@ -639,7 +639,7 @@ def init_widgets_screen2():
 def init_screens():
     return [
     	Screen(top=bar.Bar(widgets=init_widgets_screen1(), margin=[0, 0, 0, 0], size=30)),
-    	Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[0, 0, 0, 0], size=40))
+    	Screen(top=bar.Bar(widgets=init_widgets_screen2(), margin=[0, 0, 0, 0], size=40)),
     ]
             
 
