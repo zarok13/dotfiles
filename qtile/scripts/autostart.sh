@@ -6,8 +6,6 @@ function run {
 		$@&
 	fi
 }
-killall gammastep
-sleep 5
 #mouse settings values range from -1 (slowest) to 1 (fastest).
 xinput set-prop "pointer:Logitech Wireless Mouse" "libinput Accel Speed" -0.5
 
