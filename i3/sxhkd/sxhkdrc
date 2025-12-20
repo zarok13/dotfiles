@@ -1,0 +1,334 @@
+#################################################################
+# KEYBOARD BINDINGS FOR WM
+#################################################################
+# Switch to Workspaces
+super + 1
+	i3-msg workspace 1
+
+super + 2
+	i3-msg workspace 2
+
+super + 3
+	i3-msg workspace 3
+
+super + 4
+	i3-msg workspace 4
+
+super + 5
+	i3-msg workspace 5
+
+super + 6
+	i3-msg workspace 6
+
+super + 7
+	i3-msg workspace 7
+
+super + 8
+	i3-msg workspace 8
+
+super + 9
+	i3-msg workspace 9
+
+# Move to Workspaces
+super + shift + 1
+	i3-msg move container to workspace number 1
+
+super + shift + 2
+	i3-msg move container to workspace number 2
+
+super + shift + 3
+	i3-msg move container to workspace number 3
+
+super + shift + 4
+	i3-msg move container to workspace number 4
+
+super + shift + 5
+	i3-msg move container to workspace number 5
+
+super + shift + 6
+	i3-msg move container to workspace number 6
+
+super + shift + 7
+	i3-msg move container to workspace number 7
+
+super + shift + 8
+	i3-msg move container to workspace number 8
+
+super + shift + 9
+	i3-msg move container to workspace number 9
+
+# Change Window Focus
+super + h
+	i3-msg focus left
+
+super + j
+	i3-msg focus down
+
+super + k
+	i3-msg focus up
+
+super + l
+	i3-msg focus right
+
+super + Left
+	i3-msg focus left
+
+super + Down
+	i3-msg focus down
+
+super + Up
+	i3-msg focus up
+
+super + Right
+	i3-msg focus right
+
+# Move Window
+super + shift + h
+	i3-msg move left
+
+super + shift + j
+	i3-msg move down
+
+super + shift + k
+	i3-msg move up
+
+super + shift + l
+	i3-msg move right
+
+# Toggle Fullscreen
+super + f
+	i3-msg fullscreen toggle
+
+# Toggle Floating
+super + t
+	i3-msg floating toggle
+
+# Toggle Focus (Tiling/Floating)
+super + space
+	i3-msg focus mode_toggle
+
+# Focus Parent Container
+super + a
+	i3-msg focus parent
+
+# Exit i3
+super + shift + q
+	i3-msg exit
+
+# Reload i3 Config
+super + shift + c
+	i3-msg reload
+
+# Restart i3
+super + shift + r
+	i3-msg restart; notify-send 'i3' 'Restarted'
+
+# Resize Shrink Width
+super + ctrl + h
+	i3-msg resize shrink width 3 px or 3 ppt
+
+# Resize Grow Height
+super + ctrl + j
+	i3-msg resize grow height 3 px or 3 ppt
+
+# Resize Shrink Height
+super + ctrl + k
+	i3-msg resize shrink height 3 px or 3 ppt
+
+# Resize Grow Width
+super + ctrl + l
+	i3-msg resize grow width 3 px or 3 ppt
+
+# Resize Shrink Width
+super + ctrl + Left
+	i3-msg resize shrink width 3 px or 3 ppt
+
+# Resize Grow Height
+super + ctrl + Down
+	i3-msg resize grow height 3 px or 3 ppt
+
+# Resize Shrink Height
+super + ctrl + Up
+	i3-msg resize shrink height 3 px or 3 ppt
+
+# Resize Grow Width
+super + ctrl + Right
+	i3-msg resize grow width 3 px or 3 ppt
+
+# Layout Stacking
+super + s
+	i3-msg layout stacking
+
+# Layout Tabbed
+super + w
+	i3-msg layout tabbed
+
+# Layout Toggle Split
+super + e
+	i3-msg layout toggle split
+
+# Split in horizontal orientation
+super + n
+    i3-msg split h
+
+# Split in vertical orientation
+super + v
+    i3-msg split v
+
+# Move to Scratchpad
+super + minus
+	i3-msg move scratchpad; i3-msg scratchpad show, resize set 1200 800, move position center
+
+# Show/Hide Scratchpad
+super + equal
+	i3-msg scratchpad show
+
+# Move Scratchpad Back to Tiling
+super + shift + equal
+	i3-msg floating disable
+
+#################################################################
+# SUPER + FUNCTION KEYS
+#################################################################
+
+
+#Thunar
+super + F8
+    thunar
+
+#Rofi Fullscreen
+super + F11
+    rofi -theme-str 'window \{width: 100%;height: 100%;\}' -show drun
+
+#Rofi
+super + F12
+    rofi -show drun
+
+#Rofi disable history
+super + shift + Return
+    rofi -show drun -disable-history True   
+
+#################################################################
+# SUPER + ... KEYS
+#################################################################
+
+#Pavucontrol
+super + v
+    pavucontrol
+
+#Xkill
+super + Escape
+    xkill
+
+# Kill focused window
+super + q
+    i3-msg kill
+
+# Launch Terminal (alacritty)
+super + Return
+    alacritty
+#################################################################
+# SUPER + SHIFT KEYS
+#################################################################
+
+#dmenu
+super + shift + d
+	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+    
+#dmenu
+super + d
+    rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launcher9.rasi
+
+#reload sxhkd:
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+
+#################################################################
+# CONTROL + ALT KEYS
+#################################################################
+
+#File-Manager
+ctrl + alt + f
+     thunar
+
+#Nitrogen
+ctrl + alt + i
+     nitrogen
+
+#Xfce4-settings-manager
+ctrl + alt + m
+     xfce4-settings-manager
+
+#Pulse Audio Control
+ctrl + alt + u
+     pavucontrol
+
+#Rofi theme selector
+ctrl + alt + r
+  rofi-theme-selector
+
+#alacritty
+ctrl + alt + t
+	alacritty
+
+#################################################################
+#     SCREENSHOTS
+#################################################################
+
+#flameshoot
+ctrl + Print
+     flameshoot gui
+
+#################################################################
+#     MULTIMEDIA KEYS
+#################################################################
+
+#Raises volume
+XF86AudioRaiseVolume
+    amixer set Master 5%+
+
+#Lowers volume
+XF86AudioLowerVolume
+    amixer set Master 5%-
+
+#Mute
+XF86AudioMute
+    amixer -D pulse set Master 1+ toggle
+
+
+#Playerctl works for Pragha, Spotify and others
+#Delete the line for playerctl if you want to use mpc
+#and replace it with the corresponding code
+#mpc works for e.g.ncmpcpp
+#mpc toggle
+#mpc next
+#mpc prev
+#mpc stop
+
+#PLAY
+XF86AudioPlay
+    playerctl play-pause
+
+#Next
+XF86AudioNext
+    playerctl next
+
+#previous
+XF86AudioPrev
+    playerctl previous
+
+#Stop
+XF86AudioStop
+    playerctl stop
+
+#Brightness up
+#XF86MonBrightnessUp
+#    brightnessctl set +5%
+
+#Brightness down
+#XF86MonBrightnessDown
+#    brightnessctl set -5%
+
+super + F5
+    brave-bworser
