@@ -16,6 +16,10 @@ xrandr --addmode eDP-1 "1440x900"
 xrandr --output eDP-1 --mode "1440x900"
 xrandr --output HDMI-1 --mode 1920x1080 --left-of eDP-1  --output eDP-1 --mode "1440x900"
 
+export QT_IM_MODULE=ibus
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+
 ~/.config/i3/polybar/launch.sh &
 
 run xfce4-power-manager &
@@ -27,7 +31,8 @@ run picom --config ~/.config/i3/picom/picom.conf -b &
 run nitrogen --restore &
 run flameshot &
 run firewall-applet &
-#run gammastep-indicator 
+run gammastep-indicator 
 run lxpolkit &
+ibus-daemon -rxRd
 #feh --bg-fill $HOME/Pictures/wallpapers2/0001.jpg
 
