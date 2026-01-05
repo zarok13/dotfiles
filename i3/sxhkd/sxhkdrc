@@ -212,10 +212,6 @@ super + shift + Return
 # SUPER + ... KEYS
 #################################################################
 
-#Pavucontrol
-super + v
-    pavucontrol
-
 #Xkill
 super + Escape
     xkill
@@ -227,6 +223,11 @@ super + q
 # Launch Terminal (alacritty)
 super + Return
     alacritty
+
+# Power Menu
+super + x
+    $HOME/.config/rofi/powermenu/type-1/powermenu.sh
+
 #################################################################
 # SUPER + SHIFT KEYS
 #################################################################
