@@ -23,7 +23,7 @@ lock=' Lock'
 suspend=' Suspend'
 logout=' Logout'
 yes=' Yes'
-no=' No'
+no='󰜺 No'
 
 # Rofi CMD
 rofi_cmd() {
@@ -66,7 +66,7 @@ run_cmd() {
 			systemctl reboot
 		elif [[ $1 == '--suspend' ]]; then
 			#mpc -q pause
-			i3lock
+			#i3lock
 			systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
 			if [[ "$DESKTOP_SESSION" == 'qtile' ]]; then
