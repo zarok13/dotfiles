@@ -34,5 +34,6 @@ run firewall-applet &
 run gammastep-indicator 
 run lxpolkit &
 ibus-daemon -rxRd
+sudo balance.sh
 #feh --bg-fill $HOME/Pictures/wallpapers2/0001.jpg
 
