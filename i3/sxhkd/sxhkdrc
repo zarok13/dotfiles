@@ -202,11 +202,11 @@ super + F11
 
 #Rofi
 super + F12
-    rofi -show drun
+    rofi -show drun -disable-history True
 
 #Rofi disable history
 super + shift + Return
-    rofi -show drun -disable-history True   
+    rofi -show drun   
 
 #################################################################
 # SUPER + ... KEYS
@@ -228,17 +228,21 @@ super + Return
 super + x
     $HOME/.config/rofi/powermenu/type-1/powermenu.sh
 
+# Power Modes
+super + m
+    $HOME/.config/rofi/powermenu/type-2/powermenu.sh
+
 #################################################################
 # SUPER + SHIFT KEYS
 #################################################################
 
 #dmenu
-super + shift + d
-	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+#super + shift + d
+#	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
     
 #dmenu
 super + d
-    rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/rofi/launcher9.rasi
+    rofi -no-config -no-lazy-grab -show drun -disable-history True -modi drun -theme ~/.config/rofi/launcher8.rasi
 
 #reload sxhkd:
 super + shift + s
