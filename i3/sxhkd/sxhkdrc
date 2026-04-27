@@ -57,6 +57,22 @@ super + shift + 8
 super + shift + 9
 	i3-msg move container to workspace number 9
 
+# Move to next workspace
+super + alt + Right
+    i3-msg workspace next
+
+# Move to previous workspace
+super + alt + Left
+    i3-msg workspace prev
+
+# Move container to next monitor
+super + shift + greater
+    i3-msg move container to output right
+
+# Move active workspace to the next monitor
+super + shift + Right
+    i3-msg move workspace to output next
+
 # Change Window Focus
 super + h
 	i3-msg focus left
