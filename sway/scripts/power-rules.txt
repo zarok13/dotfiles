@@ -1,0 +1,6 @@
+move to /usr/local/bin/
+visudo
+user ALL=(ALL) NOPASSWD: /usr/local/bin/power-saver_AC.sh
+user ALL=(ALL) NOPASSWD: /usr/local/bin/power-saver_BAT.sh
+user ALL=(ALL) NOPASSWD: /usr/local/bin/power-balanced.sh
+user ALL=(ALL) NOPASSWD: /usr/local/bin/power-performance.sh
