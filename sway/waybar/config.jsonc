@@ -1,0 +1,96 @@
+{
+	"layer": "top",
+	"mode": "hide",
+	"start_hidden": true,
+	"modules-left": ["sway/workspaces", "wlr/taskbar"],
+	"modules-center": [],
+	"modules-right": [
+		"tray",
+		"pulseaudio#sink",
+		"pulseaudio#source",
+		"upower",
+		"clock",
+	],
+
+	"sway/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"11": "1",
+			"12": "2",
+			"13": "3",
+			"14": "4",
+			"15": "5",
+			"16": "6",
+			"17": "7",
+			"18": "8",
+			"19": "9",
+			"21": "1",
+			"22": "2",
+			"23": "3",
+			"24": "4",
+			"25": "5",
+			"26": "6",
+			"27": "7",
+			"28": "8",
+			"29": "9",
+		},
+	},
+
+	"wlr/taskbar": {
+		"format": "{icon} {title:.15}",
+		"icon-size": 14,
+		"tooltip-format": "{app_id}: {title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+	},
+
+	"tray": {
+		"icon-size": 17,
+		"spacing": 5,
+		"show-passive-items": true,
+	},
+
+	"pulseaudio#sink": {
+		"format": "{icon}  {volume}%",
+		"scroll-step": 2,
+		"on-click": "pavucontrol",
+		"on-click-middle": "io.github.dimtpap.coppwr",
+		"on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"format-icons": ["", "", ""],
+	},
+
+	"pulseaudio#source": {
+		"format": "{format_source}",
+		"format-source": "  {volume}%",
+		"format-source-muted": "  {volume}%",
+		"on-click": "pavucontrol",
+		"on-click-middle": "io.github.dimtpap.coppwr",
+		"on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+		"on-scroll-up": "",
+		"on-scroll-down": "",
+	},
+
+	"upower": {
+		"format": "  {percentage}",
+		"format-alt": "  {percentage} {time}",
+		"icon-size": 17,
+		"hide-if-empty": true,
+		"tooltip": true,
+	},
+
+	"clock": {
+		"format": "{:%a %d - %H:%M}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"format": {
+				"months": "<span color='#5294e2'><b>{}</b></span>",
+				"days": "<span color='#e0e5eb'><b>{}</b></span>",
+				"weekdays": "<span color='#b5d2f2'><b>{}</b></span>",
+				"today": "<span color='#bf616a'><b>{}</b></span>",
+			},
+		},
+	},
+}
+
