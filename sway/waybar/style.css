@@ -1,120 +1,150 @@
-/* Colors */
-@define-color text-color @theme_text_color;
-
-@define-color background @theme_base_color;
-@define-color background-alt @theme_bg_color;
-
-@define-color accent @theme_selected_bg_color;
-@define-color accent-alt @theme_selected_fg_color;
-
-@define-color alert @error_color;
-@define-color warning @warning_color;
-@define-color success @success_color;
+/* Polybar-inspired styling from bspwm-setup */
+@define-color bg #0d1117;
+@define-color bg-alt #2f363d;
+@define-color fg #d0d7de;
+@define-color primary #D29922;
+@define-color secondary #539bf5;
+@define-color disabled #4e5b55;
+@define-color alert #D29922;
 
 * {
-	border: none;
-	font-family: "Font Awesome", "Noto Sans", monospace;
-	font-size: 12px;
-	font-weight: 500;
-	color: @text-color;
-	border-radius: 0; /*0 0 7px 7px;*/ /* top-left | top-right | bottom-right | bottom-left */
+    border: none;
+    border-radius: 0;
+    font-family: "Roboto Mono Nerd Font", "JetBrainsMono Nerd Font", monospace;
+    font-size: 15px;
+    min-height: 0;
 }
 
 window#waybar {
-	background-color: alpha(@background, 1);
-	border-top: 2px solid transparent;
+    background-color: transparent;
+    color: @fg;
 }
 
-window#waybar.hidden {
-	background-color: alpha(@background, 0);
-	border-top: 2px solid transparent;
-}
-
-/* Modules */
-.modules-right {
-	background-color: transparent;
-}
-.modules-center {
-	background-color: transparent;
-}
-.modules-left {
-	background-color: transparent;
+window#waybar > box {
+    background-color: @bg;
+    border-radius: 6px;
+    margin: 6px 6px 0 6px;
 }
 
 /* Workspaces */
+#workspaces {
+    background-color: transparent;
+    padding-left: 4px;
+}
+
 #workspaces button {
-	/* margin-right: 2px; */
-	background-color: @background;
-	border-top: 2px solid @background-alt;
+    padding: 0 12px;
+    background-color: transparent;
+    color: @fg;
+    border: none;
+    border-bottom: 3px solid transparent;
+    min-width: 28px;
 }
-#workspaces button.urgent {
-	border-top: 2px solid @alert;
+
+#workspaces button.empty {
+    color: @disabled;
 }
+
 #workspaces button:hover {
-	border-top: 2px solid @accent-alt;
+    background-color: @bg-alt;
 }
-#workspaces button.active {
-	border-top: 2px solid @accent-alt;
-}
+
+/* Active/focused workspace - matches Polybar style */
 #workspaces button.focused {
-	border-top: 2px solid @accent;
+    background-color: @bg-alt;
+    color: @fg;
+    border-bottom: 3px solid @primary;
 }
 
-/* Taskbar */
-#taskbar button {
-	margin-left: 2px;
-	padding: 0 7px; /* top and bottom | left and right */
-	background-color: @background;
-	border-top: 2px solid @background-alt;
-}
-#taskbar button:hover {
-	border-top: 2px solid @accent-alt;
-}
-#taskbar button.active {
-	border-top: 2px solid @accent;
+#workspaces button.urgent {
+    background-color: @alert;
+    color: @bg;
 }
 
-#privacy,
+/* Separator styling */
+#custom-sep {
+    color: @disabled;
+    padding: 0 6px;
+}
+
+/* Window title */
+#window {
+    background-color: transparent;
+    color: @fg;
+    font-weight: normal;
+    padding: 0 8px;
+}
+
+/* Right-side modules */
+#cpu,
+#memory,
+#disk,
+#pulseaudio,
+#network,
+#battery,
 #clock,
 #tray,
-#temperature,
-#upower,
-#pulseaudio {
-	margin: 0 2px; /* top and bottom | left and right */
-	padding: 0 7px; /* top and bottom | left and right */
-	background-color: @background;
+#custom-notification,
+#custom-screenshot,
+#custom-powermenu {
+    padding: 0 10px;
+    background-color: transparent;
+    color: @fg;
 }
 
-#privacy {
-	background-color: @accent;
-	border-radius: 0 7px; /* top-left-and-bottom-right | top-right-and-bottom-left */
+#cpu {
+    padding-left: 10px;
 }
 
-#privacy-item {
-	background-color: transparent;
-	margin: 0 2px; /* top and bottom | left and right */
+#clock.date {
+    color: @fg;
 }
 
-#temperature.critical {
-	color: @alert;
+#clock.time {
+    color: @primary;
 }
 
-#clock {
-	margin-left: 2px;
-	margin-right: 0px;
-	background-color: @accent;
-	border-bottom-left-radius: 7px;
+#custom-network,
+#custom-notification,
+#custom-screenshot,
+#custom-powermenu {
+    padding: 0 8px;
 }
 
-#pulseaudio.sink.muted {
-	color: @alert;
+#custom-network {
+    color: @fg;
 }
 
-#pulseaudio.source {
-	color: @success;
+#custom-notification {
+    color: @fg;
 }
 
-#pulseaudio.source.source-muted {
-	color: @text-color;
+#custom-screenshot {
+    color: @secondary;
+}
+
+#custom-powermenu {
+    color: @alert;
+    padding-right: 10px;
+}
+
+#tray {
+    background-color: transparent;
+    padding: 0 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* Caps lock indicator */
+#keyboard-state label.locked {
+    background-color: @alert;
+    color: @bg;
+    padding: 0 6px;
 }
 
