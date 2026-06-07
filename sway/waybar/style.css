@@ -70,14 +70,14 @@ window#waybar > box {
 }
 
 /* Window title */
-/*
+
 #window {
     background-color: transparent;
     color: #FF0000;
     font-weight: normal;
     padding: 0 8px;
 }
-*/
+
 
 /* Right-side modules */
 #cpu,
