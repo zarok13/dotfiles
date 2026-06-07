@@ -15,7 +15,7 @@
     min-height: 0;
 }
 
-/*
+
 window#waybar {
     background-color: transparent;
     color: @fg;
@@ -26,7 +26,7 @@ window#waybar > box {
     border-radius: 6px;
     margin: 6px 6px 0 6px;
 }
-*/
+
 
 /* Workspaces */
 #workspaces {
