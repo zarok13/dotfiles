@@ -9,7 +9,7 @@
 
     "modules-left": ["sway/workspaces"],
     "modules-center": [],
-    "modules-right": ["disk", "custom/sep", "pulseaudio", "custom/sep", "clock#date", "custom/sep", "clock#time", "custom/sep", "custom/network", "custom/notification", "custom/screenshot", "custom/powermenu", "tray"],
+    "modules-right": ["pulseaudio", "custom/sep", "clock#date", "custom/sep", "clock#time", "custom/sep", "custom/network", "custom/notification", "custom/screenshot", "custom/powermenu", "tray"],
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
