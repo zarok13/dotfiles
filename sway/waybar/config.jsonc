@@ -7,9 +7,9 @@
     "margin-left": 0,
     "margin-right": 0,
 
-    "modules-left": ["sway/workspaces", "custom/sep"],
+    "modules-left": ["sway/workspaces"],
     "modules-center": [],
-    "modules-right": ["disk", "custom/sep", "pulseaudio", "custom/sep", "memory", "custom/sep", "cpu", "custom/sep", "clock#date", "custom/sep", "clock#time", "custom/sep", "custom/network", "custom/notification", "custom/screenshot", "custom/powermenu", "tray"],
+    "modules-right": ["disk", "custom/sep", "pulseaudio", "custom/sep", "clock#date", "custom/sep", "clock#time", "custom/sep", "custom/network", "custom/notification", "custom/screenshot", "custom/powermenu", "tray"],
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
