@@ -68,8 +68,7 @@ window#waybar > box {
 }
 
 /* Window title */
-#window {
-    background-color: transparent;
+#window 
     color: @fg;
     font-weight: normal;
     padding: 0 8px;
