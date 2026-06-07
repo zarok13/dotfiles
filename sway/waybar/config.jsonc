@@ -77,7 +77,9 @@
         "format": "<span color='#D29922'>VOL</span> {volume}%",
         "format-muted": "<span color='#4e5b55'>muted</span>",
         "tooltip": false,
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "show-volume": true,
+        "show-input": true
     },
     "keyboard-state": {
         "capslock": true,
