@@ -13,3 +13,12 @@ alias gac='git add . && git commit -m'
 
 starship init fish | source
 set -gx EDITOR vim
+
+if status is-login
+    # Check if Sway or Wayland is targeted
+    if test "$XDG_SESSION_TYPE" = "wayland" -o "$XDG_CURRENT_DESKTOP" = "sway"
+        set -gx QT_QPA_PLATFORM wayland
+        set -gx XDG_CURRENT_DESKTOP sway
+        set -gx XDG_SESSION_DESKTOP sway
+    end
+end

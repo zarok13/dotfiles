@@ -59,6 +59,8 @@ run_cmd() {
 				qtile cmd-obj -o cmd -f shutdown
 			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
 				i3-msg exit
+            elif [[ "$DESKTOP_SESSION" == 'sway' ]]; then
+                swaymsg exit
 			fi
 		fi
 	else
@@ -75,11 +77,17 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
-		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock
-		fi
+        if [[ -n "$WAYLAND_DISPLAY" ]]; then
+            if [[ -x '/usr/bin/swaylock' ]]; then
+                swaylock
+            fi
+        else
+            if [[ -x '/usr/bin/betterlockscreen' ]]; then
+                betterlockscreen -l
+            elif [[ -x '/usr/bin/i3lock' ]]; then
+                i3lock
+            fi
+        fi
         ;;
     $suspend)
 		run_cmd --suspend

@@ -3,10 +3,11 @@ font pango:JetBrainsMono Nerd Font 12
 #font pango:FiraCode Nerd Font Mono 12
 #font pango:Noto Sans 12
 
-include /etc/sway/config.d/*
 include $HOME/.config/sway/config.d/*
-
-exec_always --no-startup-id ~/.config/sway/scripts/autostart.sh
+include /etc/sway/config.d/*
 
 floating_modifier $mod
- 
+
+exec focus output eDP-1
+
+#focus_follows_mouse yes
