@@ -8,7 +8,22 @@
     "margin-right": 0,
     "modules-left": ["sway/workspaces"],
     "modules-center": [],
-    "modules-right": ["pulseaudio#output", "pulseaudio#source", "custom/sep", "battery", "custom/sep", "clock#date", "custom/sep", "clock#time", "keyboard-state", "custom/sep", "custom/notification", "tray"],
+    "modules-right": [
+            "pulseaudio#output",
+            "pulseaudio#source",
+            "custom/sep",
+            "battery",
+            "custom/sep",
+            "clock#date",
+            "custom/sep",
+            "clock#time",
+            "keyboard-state",
+            "custom/sep",
+            "idle_inhibitor",
+            "custom/sep",
+            "custom/notification",
+            "tray"
+    ],
     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": false,
@@ -104,6 +119,14 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true,
         "restart-interval": 3
-    }
+    },
+    "idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": "",
+		},
+		"icon-size": 16,
+	},
 }
 
