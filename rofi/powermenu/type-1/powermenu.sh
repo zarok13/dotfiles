@@ -79,7 +79,7 @@ case ${chosen} in
     $lock)
         if [[ -n "$WAYLAND_DISPLAY" ]]; then
             if [[ -x '/usr/bin/swaylock' ]]; then
-                swaylock
+                swaylock -f
             fi
         else
             if [[ -x '/usr/bin/betterlockscreen' ]]; then

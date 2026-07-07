@@ -38,3 +38,7 @@ ibus-daemon -rxRd
 sudo balance.sh
 #feh --bg-fill $HOME/Pictures/wallpapers2/0001.jpg
 
+# lock screen before suspend/sleep
+# cp betterlockscreen@.service /usr/lib/systemd/system/
+# systemctl enable betterlockscreen@$USER
+# systemctl disable betterlockscreen@$USER
