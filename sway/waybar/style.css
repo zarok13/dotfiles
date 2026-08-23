@@ -73,7 +73,7 @@ window#waybar > box {
 
 #window {
     background-color: transparent;
-    color: #FF0000;
+    color: #d65d0e;
     font-weight: normal;
     padding: 0 8px;
 }
@@ -90,10 +90,16 @@ window#waybar > box {
 #tray,
 #custom-notification,
 #custom-screenshot,
-#custom-powermenu {
+#bluetooth
+#custom-powermenu  {
     padding: 0 10px;
     background-color: transparent;
     color: @fg;
+}
+
+#language {
+    min-width: 30px; /* Increase this value if you still see dots */
+    padding: 0 5px;  /* Optional: adds a bit of breathing room */
 }
 
 #cpu {
@@ -156,3 +162,7 @@ window#waybar > box {
     padding-right: 10px;
 }
 
+#custom-pacman{
+    color: #2ecc71;
+    padding: 0 10px;
+}

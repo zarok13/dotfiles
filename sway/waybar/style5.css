@@ -1,0 +1,315 @@
+/* =========
+   Base
+   ========= */
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(18, 18, 24, 0.72);
+  color: #e8eaf0;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+window#waybar.empty {
+  background: rgba(18, 18, 24, 0.45);
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+/* Tooltip */
+tooltip {
+  background: rgba(16, 16, 20, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 10px;
+}
+
+tooltip label {
+  color: #e8eaf0;
+}
+
+/* =========
+   Shared modules
+   ========= */
+
+#workspaces,
+#clock,
+#network,
+#bluetooth,
+#mpd,
+#cpu,
+#memory,
+#temperature,
+#temperature-gpu,
+#disk,
+#backlight,
+#idle_inhibitor,
+#custom-power,
+#tray,
+#pulseaudio,
+#power-profiles-daemon,
+#custom-media {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e8eaf0;
+  margin: 6px 4px;
+  padding: 0 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+  transition: all 0.2s ease;
+}
+
+#workspaces:hover,
+#clock:hover,
+#network:hover,
+#bluetooth:hover,
+#mpd:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#temperature-gpu:hover,
+#disk:hover,
+#backlight:hover,
+#idle_inhibitor:hover,
+#custom-power:hover,
+#tray:hover,
+#pulseaudio:hover,
+#power-profiles-daemon:hover,
+#custom-media:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+/* =========
+   Left side
+   ========= */
+
+#workspaces {
+  padding: 0 8px;
+}
+
+#workspaces button {
+  background: transparent;
+  color: #aeb5c4;
+  border-radius: 12px;
+  margin: 4px 2px;
+  padding: 0 10px;
+  transition: all 0.18s ease;
+}
+
+#workspaces button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+#workspaces button.focused {
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.85), rgba(72, 168, 255, 0.75));
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(124, 92, 255, 0.25);
+}
+
+#workspaces button.urgent {
+  background: rgba(255, 92, 92, 0.92);
+  color: #ffffff;
+}
+
+#workspaces button.visible {
+  color: #ffffff;
+}
+
+#sway-mode {
+  background: rgba(255, 193, 7, 0.16);
+  color: #ffd86a;
+}
+
+#scratchpad {
+  color: #c9d0de;
+}
+
+/* =========
+   Center
+   ========= */
+
+#clock {
+  color: #ffffff;
+  min-width: 120px;
+  /*text-align: center;*/
+}
+
+#network {
+  color: #9ed0ff;
+}
+
+#network.disconnected,
+#network.disabled {
+  color: #ff8a8a;
+  background: rgba(255, 92, 92, 0.12);
+}
+
+#bluetooth {
+  color: #9db7ff;
+}
+
+#bluetooth.disabled {
+  color: #aeb5c4;
+  opacity: 0.7;
+}
+
+#mpd {
+  color: #d8b4ff;
+  min-width: 220px;
+}
+
+#mpd.disconnected,
+#mpd.stopped {
+  color: #aeb5c4;
+}
+
+/* =========
+   Right side
+   ========= */
+
+#cpu {
+  color: #8fe3ff;
+}
+
+#memory {
+  color: #93f0c0;
+}
+
+#disk {
+  color: #f2d38a;
+}
+
+#backlight {
+  color: #ffd27d;
+  min-width: 90px;
+}
+
+#idle_inhibitor {
+  color: #c4d0ff;
+}
+
+#idle_inhibitor.activated {
+  background: rgba(90, 210, 140, 0.14);
+  color: #8ef0b4;
+}
+
+#idle_inhibitor.deactivated {
+  color: #c4d0ff;
+}
+
+#power-profiles-daemon {
+  color: #ffd46b;
+}
+
+#power-profiles-daemon.performance {
+  background: rgba(255, 196, 0, 0.14);
+  color: #ffd46b;
+}
+
+#power-profiles-daemon.balanced {
+  color: #d6d9e0;
+}
+
+#power-profiles-daemon.power-saver {
+  background: rgba(88, 210, 130, 0.12);
+  color: #93f0c0;
+}
+
+#custom-power {
+  background: linear-gradient(135deg, rgba(255, 92, 92, 0.22), rgba(255, 164, 92, 0.18));
+  color: #ffd2cf;
+}
+
+#custom-power:hover {
+  background: linear-gradient(135deg, rgba(255, 92, 92, 0.30), rgba(255, 164, 92, 0.24));
+}
+
+#tray {
+  padding: 0 8px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+  opacity: 0.7;
+}
+
+#tray > .needs-attention {
+  background: rgba(255, 92, 92, 0.18);
+  border-radius: 10px;
+}
+
+/* =========
+   Temperature states
+   ========= */
+
+#temperature {
+  color: #8fe3ff;
+}
+
+#temperature.critical,
+#temperature-gpu.critical,
+#cpu.critical,
+#memory.critical,
+#disk.critical {
+  background: rgba(255, 92, 92, 0.18);
+  color: #ffb3b3;
+  border-color: rgba(255, 92, 92, 0.22);
+}
+
+#temperature-gpu {
+  color: #d9a7ff;
+}
+
+/* =========
+   Optional styling for custom/media
+   ========= */
+
+#custom-media {
+  color: #a8e6ff;
+  min-width: 180px;
+}
+
+#custom-media.spotify {
+  color: #9ef0c0;
+}
+
+/* =========
+   Gentle separation for module groups
+   ========= */
+
+
+/* Make the bar feel slightly taller and balanced */
+#clock,
+#network,
+#bluetooth,
+#mpd,
+#cpu,
+#memory,
+#temperature,
+#temperature-gpu,
+#disk,
+#backlight,
+#idle_inhibitor,
+#power-profiles-daemon,
+#custom-power {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Smooth icon rendering */
+label,
+button {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,265 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    //"height": 40, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 9, // Gaps between modules 
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-bottom": 10,
+
+    // Choose the order of the modules
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad"
+    ],
+    "modules-center": [
+        "network",
+        "clock",
+        "bluetooth",
+        "mpd" // music player
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        //"pulseaudio",
+        "cpu",
+        "memory",
+        "temperature",
+	"temperature#gpu",         // GPU block
+ 	"disk",
+        "backlight"
+         //"custom/power"
+    ],
+    // Modules configuration
+     "sway/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "warp-on-scroll": false,
+         //"format": "{name}: {icon}",
+         //"format-icons": {
+//             "1": "",
+  //           "2": "",
+    //         "3": "",
+      //       "4": "",
+        //     "5": ""
+             //"urgent": "",
+             //"focused": "",
+             //"default": ""
+         //}
+     },
+    "sway/window": {
+       "format": "{title}",
+       "max-length": 40,
+       "rewrite": {
+          "(.*) - Mozilla Firefox": "🌎 $1",
+          "(.*) - vim": " $1",
+          "(.*) - zsh": " [$1]"
+       }
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 3,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        }
+    },
+    "tray": {
+        "icon-size": 26,
+        "spacing": 10,
+         "icons": {
+           "blueman": "bluetooth",
+           "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+         }
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+	//"format": "{:%a, %d.%m  %H:%M}",
+        "format": "󰸗 {:%d.%m   %H:%M}", 
+	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt> ",
+        "format-alt": "󰸗 {:%d-%m-%y}"
+    },
+    "cpu": {
+        "format": "{usage}%  ",
+        "format-alt": "{avg_frequency}GHz ",
+	"tooltip": true,
+	"tooltip-format": "{usage}%\n{avg_frequency} GHz",
+        "interval": 1
+    },
+    "memory": {
+        //"format": "{}% ",
+        "format": "{}%  ",
+	"format-alt": "{used}/{total}GiB ", 
+        "interval": 2
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+	// for i in /sys/class/hwmon/hwmon*/name; do echo "$i: $(cat $i)"; done
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "critical-threshold": 70,
+        "format-critical": "{temperatureC}°C {icon}",
+        "format": " {temperatureC}°C {icon}",
+	"format-alt": " ",
+        "format-icons": ["", "", ""]
+    },
+    "temperature#gpu": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 70,
+        "format": "GPU {temperatureC}°C {icon}",
+	//"format-alt": "hello",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+	"format-icons": ["󰃞", "󰃟", "󰃠", "󰃡", "󰃢"]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "network": {
+	"interval": 10,
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        //  "format-wifi": "{signalStrength}%  ",
+        "format-wifi": "  {frequency}GHz",
+	// "format-wifi": "{essid} ({signalStrength}%) ",
+	"format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) 󰤮",
+        "format-disconnected": "󰤮",
+	"format-disabled": "{ifname} disabled",
+        //"format-alt": "{ipaddr}/{cidr} {frequency}GHz"
+        "format-alt": "{ipaddr}/{cidr}"
+    },
+    "bluetooth": {
+	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	"format": " {status}",
+	"format-disabled": "interface disabled", // an empty format will hide the module
+	"format-connected": " {num_connections} connected",
+	"tooltip-format": "{controller_alias}\t{controller_address}",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "disk": {
+        "interval": 30,
+        "format": "{percentage_used}% 󰋊 ",
+	"format-alt": "{used}/{free} 󰋊 ",
+        "path": "/"
+    },
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/power": {
+        "format" : "⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    }
+}

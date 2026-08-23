@@ -1,0 +1,94 @@
+* {
+    font-family: 'JetBrains Mono Nerd Font', 'monospace';
+    font-size: 16px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 46, 0.0); /* Transparent; */
+    color: #cdd6f4; /* Soft white/grey text */
+    border-radius: 12px;
+    margin: 8px 10px;
+}
+
+#clock, 
+#battery, 
+#cpu, 
+#memory, 
+#temperature, 
+#backlight, 
+#network,
+#pulseaudio,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#bluetooth,
+#workspaces,
+#custom-notification,
+#sway-language,
+#custom-pacman{
+    padding: 0 8px;
+    margin: 6px 6px;
+    border-radius: 8px;
+    background-color: #313244;
+    color: #cdd6f4;
+}
+
+#workspaces {
+    padding: 0px 8px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    margin: 4px 2px;
+    color: #a6adc8;
+    background-color: transparent;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+/* Accent Color 1: Pastel Blue for Active Workspaces */
+#workspaces button.focused {
+    background-color: #89b4fa;
+    color: #1e1e2e; /* Dark text on light background */
+}
+
+#workspaces button:hover {
+    background-color: #45475a;
+}
+
+#clock {
+    color: #89b4fa;
+    background-color: rgba(0, 0, 0, 0.5); /* Very faint purple tint */
+}
+
+#custom-pacman{
+    color: #2ecc71;
+    padding: 0 10px;
+}
+
+#mode {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+}
+
+/* ALERTS: Keep Red ONLY for things that need your immediate attention */
+#workspaces button.urgent,
+#battery.critical:not(.charging),
+#temperature.critical {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+    animation: blink 1s steps(2, start) infinite;
+}
+
+#tray {
+    padding: 0 10px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #cdd6f4;
+        color: #f38ba8;
+    }
+}

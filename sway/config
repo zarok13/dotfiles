@@ -10,4 +10,7 @@ floating_modifier $mod
 
 exec focus output eDP-1
 
+
+
 #focus_follows_mouse yes
+

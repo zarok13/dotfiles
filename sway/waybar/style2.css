@@ -1,0 +1,161 @@
+/* =============================================================================
+ * Waybar Style - Catppuccin Mocha Inspired
+ * =========================================================================== */
+
+* {
+    /* Replace with your preferred Nerd Font */
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+/* --- The Main Bar --- */
+window#waybar {
+    background-color: rgba(30, 30, 46, 0.85); /* Base color with opacity */
+    color: #cdd6f4; /* Text color */
+    border-radius: 12px; /* Smooth rounded corners for the whole bar */
+    /* Add a subtle shadow for that floating effect */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); 
+}
+
+/* --- Tooltips --- */
+tooltip {
+    background: #1e1e2e;
+    border-radius: 10px;
+    border: 2px solid #cba6f7; /* Mauve border */
+}
+tooltip label {
+    color: #cdd6f4;
+    padding: 5px;
+}
+
+/* --- Workspaces --- */
+#workspaces {
+    background-color: #313244; /* Surface 0 */
+    border-radius: 10px;
+    margin: 4px 8px;
+    padding: 2px 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #6c7086; /* Unfocused color */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button:hover {
+    background-color: #45475a; /* Surface 1 */
+    color: #cdd6f4;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button.focused {
+    background-color: #89b4fa; /* Blue accent */
+    color: #1e1e2e;
+}
+
+#workspaces button.urgent {
+    background-color: #f38ba8; /* Red accent */
+    color: #1e1e2e;
+}
+
+/* --- General Module Styling --- */
+/* Creating the 'pill' look for all modules */
+#mode,
+#scratchpad,
+#temperature,
+#clock,
+#bluetooth,
+#mpd,
+#network,
+#cpu,
+#memory,
+#backlight {
+    background-color: #313244;
+    padding: 0 12px;
+    margin: 4px 4px;
+    border-radius: 10px;
+    color: #cdd6f4;
+}
+
+/* --- Left Modules --- */
+#mode {
+    background-color: #f9e2af; /* Yellow */
+    color: #1e1e2e;
+}
+
+#scratchpad {
+    color: #f38ba8; /* Red */
+}
+
+/* --- Center Modules --- */
+#mpd {
+    color: #f5c2e7; /* Pink */
+}
+
+#mpd.disconnected {
+    color: #6c7086;
+}
+
+#mpd.stopped {
+    color: #a6adc8;
+}
+
+#clock {
+    color: #cba6f7; /* Mauve */
+}
+
+#bluetooth {
+    color: #74c7ec; /* Sapphire */
+}
+
+/* --- Right Modules --- */
+#network {
+    color: #89b4fa; /* Blue */
+}
+
+#network.disconnected {
+    color: #f38ba8; /* Red warning */
+}
+
+#cpu {
+    color: #eba0ac; /* Maroon */
+}
+
+#memory {
+    color: #fab387; /* Peach */
+}
+
+#temperature {
+    color: #a6e3a1; /* Green */
+}
+
+#temperature.gpu {
+    color: #94e2d5; /* Teal */
+}
+
+#temperature.critical,
+#temperature.gpu.critical {
+    background-color: #f38ba8; /* Red background on critical */
+    color: #1e1e2e;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#backlight {
+    color: #f9e2af; /* Yellow */
+}
+
+/* --- Animations --- */
+@keyframes blink {
+    to {
+        background-color: #1e1e2e;
+        color: #f38ba8;
+    }
+}

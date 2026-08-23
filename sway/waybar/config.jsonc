@@ -1,4 +1,5 @@
-{
+[{
+    "output": "eDP-1",
     "layer": "top",
     "position": "top",
     "height": 38,
@@ -7,22 +8,24 @@
     "margin-left": 0,
     "margin-right": 0,
     "modules-left": ["sway/workspaces"],
-    "modules-center": [],
+    "modules-center": [
+            "custom/notification",
+            "clock#time",
+            "idle_inhibitor",
+            "custom/pacman"
+            //"mpd"
+    ],
     "modules-right": [
+            "custom/powerprofile",
+            "battery",
+            "keyboard-state#caps",
+            "keyboard-state#num",
             "pulseaudio#output",
             "pulseaudio#source",
-            "custom/sep",
-            "battery",
-            "custom/sep",
-            "clock#date",
-            "custom/sep",
-            "clock#time",
-            "keyboard-state",
-            "custom/sep",
-            "idle_inhibitor",
-            "custom/sep",
-            "custom/notification",
-            "tray"
+            "bluetooth",
+            "network",
+            "sway/language"
+            //"tray"
     ],
     "sway/workspaces": {
         "disable-scroll": false,
@@ -35,20 +38,14 @@
         "format": "|",
         "tooltip": false
     },
-    "tray": {
-        "spacing": 4,
-        "icon-size": 16,
-        "show-passive-items": false
-    },
     "clock#date": {
         "format": "{:%a %b %d}",
         "tooltip": false
     },
-
     "clock#time": {
         "format": "{:%I:%M %p}",
         "format-alt": "{:%Y-%m-%d %I:%M:%S %p}",
-        "tooltip-format": "<b>{:%A, %B %d, %Y}</b>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<b>{:%A, %B %d, %Y}</b>\n<span size='14pt' font='JetBrainsMonoNL Nerd Font Mono'>{calendar}</span>",
         "calendar": {
             "mode": "month",
             "format": {
@@ -70,38 +67,52 @@
         "tooltip": true
     },
     "pulseaudio#output": {
-		"format": "{icon}  {volume}%",
+		"format": "{icon} {volume}%",
         "format-muted": "<span color='#4e5b55'>muted</span>",
 		"scroll-step": 2,
 		"on-click-right": "pavucontrol",
 		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-		"format-icons": ["", "", ""]
+		"format-icons": ["", "", ""],
+        "tooltip": false
 	},
 	"pulseaudio#source": {
 		"format": "{format_source}",
-		"format-source": "  {volume}%",
-		"format-source-muted": "<span color='#FF0000'></span>  {volume}%",
+		"format-source": " {volume}%",
+		"format-source-muted": "<span color='#FF0000'></span> {volume}%",
 		"on-click-right": "pavucontrol",
 		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
-        "scroll-step": 5
+        "scroll-step": 5,
+        "tooltip": false
 	},
-    "keyboard-state": {
+    "sway/language": {
+        "format": "{short}",
+        "format-en": "EN",
+        "format-ru": "RU",
+        "format-ge": "GE",
+        "tooltip": false,
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+    },
+    "keyboard-state#caps": {
         "capslock": true,
-        "numlock": false,
-        "format": {
-            "capslock": "{icon}",
-            "numlock": ""
-        },
+        "format": "{icon}",
         "format-icons": {
-            "locked": "  Caps ",
+            "locked": " Caps ",
+            "unlocked": ""
+        }
+    },
+    "keyboard-state#num": {
+        "numlock": true,
+        "format": "{icon}",
+        "format-icons": {
+            "locked": " Num ",
             "unlocked": ""
         }
     },
     "custom/notification": {
         "tooltip": false,
-        "format": "{icon}",
+        "format": " {icon} ",
         "format-icons": {
             "notification": "<span foreground='#D29922'>󰂚</span>",
             "none": "<span foreground='#d0d7de'>󰂚</span>",
@@ -123,10 +134,275 @@
     "idle_inhibitor": {
 		"format": "{icon}",
 		"format-icons": {
-			"activated": "",
-			"deactivated": "",
+			"activated": " ",
+			"deactivated": " "
 		},
-		"icon-size": 16,
-	},
-}
+		"icon-size": 16
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 3,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "network": {
+        "format-wifi": " ",
+        "format-ethernet": " ",
+        "format-disconnected": "󰤮 ",
+        "format-disabled": " ",
+        "tooltip-format": "{essid}",
+        "on-click": "ghostty --title=nmtui -e 'nmtui'",
+        "on-click-right": "nm-connection-editor"
+    },
+    "bluetooth": {
+        "format": "",
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{status}",
+        "on-click": "blueman-manager",
+        "on-click-right": "bluetoothctl power $(bluetoothctl show | grep -q 'Powered: yes' && echo 'off' || echo 'on')"
+    },
+    "custom/powerprofile": {
+        "format": "{}",
+        "exec": "cpu-status.sh",
+        "tooltip": false,
+        "interval": 5,
+        "escape": true
+    },
+    "custom/pacman": {
+        "format": "{}  ",
+        "exec": "checkupdates | wc -l",
+        "on-click": "pkill -RTMIN+8 waybar",
+        "on-click-right": "alacritty -e bash -lc 'checkupdates; echo; read -p \"Press Enter...\"'",
+        "signal": 8
+    }
+},{
+    "output": "eDP-1",
+    "layer": "top",
+    "position": "bottom",
+    "exclusive": false,
+    "height": 40,
+    "spacing": 0,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": [],
+    "modules-center": [],
+    "modules-right": [
+            "tray"
+    ],
+    "tray": {
+        "spacing": 6,
+        "icon-size": 20,
+        "show-passive-items": false
+    },
+},{
+    "output": "HDMI-A-1",
+    "layer": "top",
+    "position": "top",
+    "height": 38,
+    "spacing": 0,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": ["sway/workspaces"],
+    "modules-center": [
+            "custom/notification",
+            "clock#time",
+            "idle_inhibitor",
+            "custom/pacman"
+            //"mpd"
+    ],
+    "modules-right": [
+            "custom/powerprofile",
+            "battery",
+            "keyboard-state#caps",
+            "keyboard-state#num",
+            "pulseaudio#output",
+            "pulseaudio#source",
+            "bluetooth",
+            "network",
+            "sway/language"
+    ],
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": false,
+        "format": "{name}",
+        "disable-scroll-wraparound": true,
+        "numeric-first": true
+    },
+    "custom/sep": {
+        "format": "|",
+        "tooltip": false
+    },
+    "clock#date": {
+        "format": "{:%a %b %d}",
+        "tooltip": false
+    },
 
+    "clock#time": {
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%Y-%m-%d %I:%M:%S %p}",
+        "tooltip-format": "<b>{:%A, %B %d, %Y}</b>\n<span size='14pt' font='JetBrainsMonoNL Nerd Font Mono'>{calendar}</span>",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#d0d7de'><b>{}</b></span>",
+                "days": "<span color='#d0d7de'>{}</span>",
+                "weekdays": "<span color='#D29922'><b>{}</b></span>",
+                "today": "<span color='#539bf5'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "<span color='#D29922'>BAT</span> {capacity}%",
+        "format-charging": "<span color='#D29922'>CHG</span> {capacity}%",
+        "format-plugged": "<span color='#D29922'>PLG</span> {capacity}%",
+        "tooltip": true
+    },
+    "pulseaudio#output": {
+        "format": "{icon} {volume}%",
+        "format-muted": "<span color='#4e5b55'>muted</span>",
+        "scroll-step": 2,
+        "on-click-right": "pavucontrol",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "format-icons": ["", "", ""],
+        "tooltip": false
+    },
+    "pulseaudio#source": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "<span color='#FF0000'></span>  {volume}%",
+        "on-click-right": "pavucontrol",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
+        "scroll-step": 5,
+        "tooltip": false
+    },
+    "sway/language": {
+        "format": "{short}",
+        "format-en": "EN",
+        "format-ru": "RU",
+        "format-ge": "GE",
+        "tooltip": false,
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+    },
+    "keyboard-state#caps": {
+        "capslock": true,
+        "format": "{icon}",
+        "format-icons": {
+            "locked": " Caps ",
+            "unlocked": ""
+        }
+    },
+    "keyboard-state#num": {
+        "numlock": true,
+        "format": "{icon}",
+        "format-icons": {
+            "locked": " Num ",
+            "unlocked": ""
+        }
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": " {icon} ",
+        "format-icons": {
+            "notification": "<span foreground='#D29922'>󰂚</span>",
+            "none": "<span foreground='#d0d7de'>󰂚</span>",
+            "dnd-notification": "<span foreground='#D29922'>󰂛</span>",
+            "dnd-none": "<span foreground='#d0d7de'>󰂛</span>",
+            "inhibited-notification": "<span foreground='#D29922'>󰂚</span>",
+            "inhibited-none": "<span foreground='#d0d7de'>󰂚</span>",
+            "dnd-inhibited-notification": "<span foreground='#D29922'>󰂛</span>",
+            "dnd-inhibited-none": "<span foreground='#d0d7de'>󰂛</span>"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb --skip-wait",
+        "on-click": "swaync-client -t",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true,
+        "restart-interval": 3
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        },
+        "icon-size": 16
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 3,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "network": {
+        "format-wifi": " ",
+        "format-ethernet": " ",
+        "format-disconnected": "󰤮 ",
+        "format-disabled": " ",
+        "tooltip-format": "{essid}",
+        "on-click": "ghostty --title=nmtui -e 'nmtui'",
+        "on-click-right": "nm-connection-editor"
+    },
+    "bluetooth": {
+        "format": "",
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{status}",
+        "on-click": "blueman-manager",
+        "on-click-right": "bluetoothctl power $(bluetoothctl show | grep -q 'Powered: yes' && echo 'off' || echo 'on')"
+    },
+    "custom/powerprofile": {
+        "format": "{}",
+        "exec": "cpu-status.sh",
+        "tooltip": false,
+        "interval": 5,
+        "escape": true
+    }
+}]
