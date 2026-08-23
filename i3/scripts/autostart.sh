@@ -29,7 +29,8 @@ run nm-applet &
 run conky -c ~/.config/i3/conky/conky.conf -d
 run sxhkd -c ~/.config/i3/sxhkd/sxhkdrc &
 run picom --config ~/.config/i3/picom/picom.conf -b &
-run nitrogen --restore &
+#run nitrogen --restore &
+feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 run flameshot &
 run firewall-applet &
 run gammastep-indicator 
