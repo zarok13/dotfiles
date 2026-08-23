@@ -1,0 +1,116 @@
+pkgname=librewolf-bin
+pkgver=154.0_2
+_fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
+_librewolfver="${pkgver#*_}"
+_firefoxver="${_fixedfirefoxver%.0}"
+pkgrel=1
+pkgdesc='Firefox fork for privacy'
+arch=(x86_64)
+license=(MPL-2.0)
+url="https://librewolf.net"
+depends=(
+  alsa-lib
+  at-spi2-core
+  bash
+  cairo
+  dbus
+  ffmpeg
+  fontconfig
+  freetype2
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  gtk3
+  hicolor-icon-theme
+  libpulse
+  libx11
+  libxcomposite
+  libxcb
+  libxcursor
+  libxdamage
+  libxext
+  libxfixes
+  libxi
+  libxrandr
+  libxrender
+  libxt
+  mime-types
+  nspr
+  nss
+  pango
+  startup-notification
+  ttf-font
+)
+optdepends=(
+  'hunspell-en_US: Spell checking, American English'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'pulseaudio: Audio support'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
+makedepends=('git')
+provides=(${pkgname//-bin/""})
+conflicts=(${pkgname//-bin/""})
+validpgpkeys=('662E3CDD6FE329002D0CA5BB40339DD82B12EF16') #librewolf maintainers
+backup=('usr/lib/librewolf/librewolf.cfg'
+        'usr/lib/librewolf/distribution/policies.json')
+install='librewolf-bin.install'
+
+_base_url=https://codeberg.org/api/packages/librewolf/generic/${pkgname//-bin/""}/$_firefoxver-$_librewolfver
+_uploadpath=${_base_url}/${pkgname//-bin/""}-$_firefoxver-$_librewolfver-linux-${CARCH}-package.tar.xz
+_uploadpath_sig=${_uploadpath}.sig
+_source_tag="$_firefoxver-$_librewolfver"
+source=(
+  "git+https://codeberg.org/librewolf/source.git"
+  librewolf.desktop
+  "${_uploadpath}"
+  "${_uploadpath_sig}"	
+)
+
+sha256sums=('SKIP'
+            '655da27e3cd0ea07ba04a51ee8a38b2eebf489cac2cc6a601b637040abc22f4d'
+            '28fbf8e3e175a1fabb2f625ae9733802d22eb480927c9cfa47b5ef92f947e58d'
+            'SKIP')
+
+pkgver() {
+    cd source
+    git describe --tags --abbrev=0 | sed 's/^v//;s/-/_/'
+}
+
+package() {
+  install -dm 755 ${pkgdir}/usr/lib/librewolf
+  install -dm 755 ${pkgdir}/usr/bin
+  cp -r "${srcdir}"/${pkgname//-bin/""}/* "${pkgdir}"/usr/lib/librewolf
+
+  cd ${srcdir}/${pkgname//-bin/""}
+
+  for i in 16 32 48 64 128; do
+    install -Dvm644 ${srcdir}/source/themes/browser/branding/${pkgname//-bin/""}/default$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname//-bin/""}.png"
+  done
+  install -Dvm644 ${srcdir}/source/themes/browser/branding/librewolf/default256.png \
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/${pkgname//-bin/""}.png"
+
+  # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
+  install -Dvm644 ${srcdir}/source/themes/browser/branding/${pkgname//-bin/""}/default16.png \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/${pkgname//-bin/""}-symbolic.png"
+
+  install -Dvm644 ${srcdir}/${pkgname//-bin/""}.desktop \
+    "$pkgdir/usr/share/applications/${pkgname//-bin/""}.desktop"
+
+  # Install a wrapper to avoid confusion about binary path
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/${pkgname//-bin/""}" <<END
+#!/bin/sh
+exec /usr/lib/${pkgname//-bin/""}/librewolf "\$@"
+END
+
+  # ln -srfv "$pkgdir/usr/bin/${pkgname//-bin/""}" "$pkgdir/usr/lib/${pkgname//-bin/""}/librewolf-bin"
+  # Use system certificates
+  local nssckbi="$pkgdir/usr/lib/${pkgname//-bin/""}/libnssckbi.so"
+  if [[ -e $nssckbi ]]; then
+    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+  fi
+
+}

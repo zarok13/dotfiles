@@ -1,0 +1,54 @@
+
+pkgbase=rustdesk-bin
+pkgname=(rustdesk-bin)
+pkgver=1.4.9
+pkgrel=1
+pkgdesc="Remote desktop written in rust"
+url="https://github.com/rustdesk/rustdesk"
+license=('AGPL-3.0-only')
+arch=(x86_64)
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+depends=(
+    'gtk3'
+    'xdotool'
+    'libxcb'
+    'libxfixes'
+    'libpulse'
+    'libva'
+    'libvdpau'
+    'pam'
+    'gst-plugins-base'
+    'gst-plugin-pipewire'
+)
+optdepends=(
+    'libappindicator-gtk3: tray icon'
+    'libayatana-appindicator: tray icon'
+)
+makedepends=('git')
+options=('!strip' '!lto' '!debug')
+source=("${pkgbase%-bin}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::$url/releases/download/${pkgver/_/-}/rustdesk-${pkgver/_/-}-0-x86_64.pkg.tar.zst")
+sha256sums=('679760e1a1f1b930529069edfaec219afa16b5efe44c1bc593cede0e65576c11')
+
+pkgver() {
+  git ls-remote --tags --refs https://github.com/rustdesk/rustdesk.git \
+    | sed 's|.*refs/tags/||' \
+    | grep -E '^[0-9]+(\.[0-9]+)*$' \
+    | sort -V \
+    | tail -1
+}
+
+package() {
+    install -d "${pkgdir}/usr/share/" "${pkgdir}/usr/bin/"
+    cp -r "${srcdir}/usr/share/rustdesk/" "${pkgdir}/usr/share/"
+    cp -r "${srcdir}/usr/share/icons/" "${pkgdir}/usr/share/"
+
+    ln -s "/usr/share/rustdesk/rustdesk" "${pkgdir}/usr/bin/rustdesk"
+
+    install -Dm 644 "${srcdir}/usr/share/rustdesk/files/rustdesk.service" "${pkgdir}/usr/lib/systemd/system/rustdesk.service"
+    install -Dm 644 "${srcdir}/usr/share/rustdesk/files/rustdesk.desktop" "${pkgdir}/usr/share/applications/rustdesk.desktop"
+    install -Dm 644 "${srcdir}/usr/share/rustdesk/files/rustdesk-link.desktop" "${pkgdir}/usr/share/applications/rustdesk-link.desktop"
+
+    # Remove useless files
+    rm -r "${pkgdir}/usr/share/rustdesk/files/"
+}

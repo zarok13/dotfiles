@@ -1,0 +1,60 @@
+pkgname=brave-bin
+pkgver=1.93.138
+pkgrel=1
+pkgdesc='Web browser that blocks ads and trackers by default'
+arch=(x86_64)
+license=('MIT')
+url="https://brave.com"
+depends=(
+    alsa-lib
+    gtk3
+    libxss
+    nss
+    ttf-font
+)
+optdepends=(
+    'cups: Printer support'
+    'libgnome-keyring: Enable GNOME keyring support'
+    'libnotify: Native notification support'
+)
+provides=("${pkgname%-bin}=$pkgver" 'brave-browser')
+conflicts=("${pkgname%-bin}")
+source=(
+    ${pkgname}-${pkgver}-x86_64.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-${pkgver}-linux-amd64.zip
+    brave-browser.desktop
+)
+noextract=(${pkgname}-${pkgver}-x86_64.zip)
+sha256sums=('9661795c4b961ac1697fe4fa8cadf958b9c30e39e4c8db8f3bb747679c86c2ef'
+            '44d8cebfeb35812f66595d745c196a8fe88c2b04b20d074e16c0be653da9c247')
+
+pkgver() {
+  curl -s "https://api.github.com/repos/brave/brave-browser/releases/latest" \
+    | grep '"tag_name":' \
+    | sed -E 's/.*"v([^"]+)".*/\1/'
+}
+
+prepare() {
+    mkdir -p brave
+    bsdtar -xf "$pkgname-$pkgver-$CARCH.zip" -C brave
+    chmod +x brave/brave
+}
+
+package() {
+    install -dm0755 "$pkgdir/opt"
+    cp -a brave "$pkgdir/opt/$pkgname"
+
+    # allow firejail users to get the suid sandbox working
+    chmod 4755 "$pkgdir/opt/brave-bin/chrome-sandbox"
+
+    # symlink onto PATH directly
+    install -d "$pkgdir/usr/bin"
+    ln -sf "/opt/$pkgname/brave" "$pkgdir/usr/bin/brave"
+
+    install -Dm0644 -t "$pkgdir/usr/share/applications/" "brave-browser.desktop"
+    install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" brave/LICENSE
+    pushd "$pkgdir/usr/"
+    for size in 16x16 24x24 32x32 48x48 64x64 128x128 256x256; do
+    	install -Dm0644 "$pkgdir/opt/$pkgname/product_logo_${size/x*/}.png" \
+    		"share/icons/hicolor/$size/apps/brave-desktop.png"
+    done
+}

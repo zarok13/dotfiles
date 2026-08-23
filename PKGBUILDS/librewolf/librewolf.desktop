@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Librewolf
+Exec=/usr/lib/librewolf/librewolf %u
+Icon=librewolf
+Terminal=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;application/x-xpinstall;application/pdf;application/json;
+StartupNotify=true
+Categories=Network;WebBrowser;
