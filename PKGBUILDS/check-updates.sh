@@ -4,11 +4,9 @@
 # WITHOUT building anything. Useful before running build-packages.sh.
 #
 # For each package directory:
-#   1. Reads the currently installed version via pacman -Q
+#   1. updpkgsums   -> refresh checksums to match already-fetched sources
 #   2. Runs `makepkg -co` (clean + fetch sources only) so any pkgver()
 #      function gets a chance to auto-bump pkgver= in the PKGBUILD
-#   3. Reads the (possibly updated) pkgver/pkgrel from the PKGBUILD
-#   4. Reports whether an update is available
 #
 # Usage:
 #   ./check-updates.sh                 -> auto-detects every subdir with a PKGBUILD
@@ -86,6 +84,14 @@ for pkgdir in "${DIRS[@]}"; do
     fi
 
     cd "$BASE_DIR/$pkgdir" || { ERRORS+=("$pkgdir (cd failed)"); continue; }
+
+    echo "-- updpkgsums (refresh checksums)"
+    if ! updpkgsums; then
+        echo "!! updpkgsums failed for $pkgdir"
+        FAILED+=("$pkgdir (updpkgsums)")
+        cd "$BASE_DIR"
+        continue
+    fi
 
     # Sanitize in case pkgdir contains slashes, so the log path is always a flat filename.
     safe_name="${pkgdir//\//_}"
