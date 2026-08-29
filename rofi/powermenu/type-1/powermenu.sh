@@ -8,13 +8,14 @@ theme='style-1'
 uptime="`uptime -p | sed -e 's/up //g'`"
 
 # Options
-shutdown=' Shutdown'
-reboot=' Reboot'
-lock=' Lock'
-suspend=' Suspend'
-logout=' Logout'
-yes=' Yes'
-no='󰜺 No'
+lock='🔒Lock'
+suspend='🌙 Sleep'
+hibernate='💤 Hibernate'
+logout='🚪 Logout'
+reboot='🔄 Reboot'
+shutdown='⏻ Shutdown'
+yes='󰄬 Yes'
+no='󰅖 No'
 
 rofi_cmd() {
 	rofi -dmenu \
@@ -40,22 +41,30 @@ confirm_exit() {
 }
 
 run_rofi() {
-	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	echo -e "$lock\n$suspend\n$hibernate\n$logout\n$reboot\n$shutdown" | rofi_cmd
 }
 
 run_cmd() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
-		if [[ $1 == '--shutdown' ]]; then
-			#systemctl poweroff
-            shutdown now
-		elif [[ $1 == '--reboot' ]]; then
-			#systemctl reboot
-            reboot
+        if [[ $1 == '--lock' ]]; then
+            if [[ -n "$WAYLAND_DISPLAY" ]]; then
+                if [[ -x '/usr/bin/swaylock' ]]; then
+                    swaylock -f
+                fi
+            else
+                if [[ -x '/usr/bin/betterlockscreen' ]]; then
+                    betterlockscreen -l
+                elif [[ -x '/usr/bin/i3lock' ]]; then
+                    i3lock
+                fi
+            fi
 		elif [[ $1 == '--suspend' ]]; then
-			#mpc -q pause
-			#i3lock
+			mpc -q pause
 			systemctl suspend
+		elif [[ $1 == '--hibernate' ]]; then
+			mpc -q pause
+			systemctl hibernate
 		elif [[ $1 == '--logout' ]]; then
 			if [[ "$DESKTOP_SESSION" == 'qtile' ]]; then
 				qtile cmd-obj -o cmd -f shutdown
@@ -64,6 +73,10 @@ run_cmd() {
             elif [[ "$DESKTOP_SESSION" == 'sway' ]]; then
                 swaymsg exit
 			fi
+		elif [[ $1 == '--reboot' ]]; then
+			systemctl reboot
+		elif [[ $1 == '--shutdown' ]]; then
+			systemctl poweroff
 		fi
 	else
 		exit 0
@@ -72,29 +85,22 @@ run_cmd() {
 
 chosen="$(run_rofi)"
 case ${chosen} in
-    $shutdown)
-		run_cmd --shutdown
-        ;;
-    $reboot)
-		run_cmd --reboot
-        ;;
     $lock)
-        if [[ -n "$WAYLAND_DISPLAY" ]]; then
-            if [[ -x '/usr/bin/swaylock' ]]; then
-                swaylock -f
-            fi
-        else
-            if [[ -x '/usr/bin/betterlockscreen' ]]; then
-                betterlockscreen -l
-            elif [[ -x '/usr/bin/i3lock' ]]; then
-                i3lock
-            fi
-        fi
+        run_cmd --lock
         ;;
     $suspend)
 		run_cmd --suspend
         ;;
+    $hibernate)
+        run_cmd --hibernate
+        ;;
     $logout)
 		run_cmd --logout
+        ;;
+    $reboot)
+		run_cmd --reboot
+        ;;
+    $shutdown)
+		run_cmd --shutdown
         ;;
 esac
