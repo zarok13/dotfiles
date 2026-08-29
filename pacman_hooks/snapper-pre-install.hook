@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Type = Package
+Target = *
+
+[Action]
+Description = Creating snapper pre-shot...
+When = PreTransaction
+Exec = /usr/local/bin/snapper-pacman-hook.sh Install
+Depends = snapper
