@@ -6,7 +6,7 @@
 
 window#waybar {
     background-color: rgba(30, 30, 46, 0.0); /* Transparent; */
-    color: #cdd6f4; /* Soft white/grey text */
+    color: #cdd6f4;
     border-radius: 12px;
     margin: 8px 10px;
 }
@@ -25,8 +25,9 @@ window#waybar {
 #scratchpad,
 #bluetooth,
 #workspaces,
+#language,
 #custom-notification,
-#sway-language,
+#custom-powerprofile,
 #custom-pacman{
     padding: 0 8px;
     margin: 6px 6px;
@@ -80,6 +81,14 @@ window#waybar {
     background-color: #f38ba8;
     color: #1e1e2e;
     animation: blink 1s steps(2, start) infinite;
+}
+
+#keyboard-state label.locked {
+    padding: 0 8px;
+    margin: 6px 6px;
+    border-radius: 8px;
+    background-color: #D29922;
+    color: #0d1117;
 }
 
 #tray {

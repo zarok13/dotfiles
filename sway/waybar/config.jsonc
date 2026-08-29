@@ -12,12 +12,10 @@
             "custom/notification",
             "clock#time",
             "idle_inhibitor",
-            "custom/pacman"
-            //"mpd"
+            "custom/pacman",
+            "mpd"
     ],
     "modules-right": [
-            "custom/powerprofile",
-            "battery",
             "keyboard-state#caps",
             "keyboard-state#num",
             "pulseaudio#output",
@@ -25,7 +23,6 @@
             "bluetooth",
             "network",
             "sway/language"
-            //"tray"
     ],
     "sway/workspaces": {
         "disable-scroll": false,
@@ -55,16 +52,6 @@
                 "today": "<span color='#539bf5'><b><u>{}</u></b></span>"
             }
         }
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "<span color='#D29922'>BAT</span> {capacity}%",
-        "format-charging": "<span color='#D29922'>CHG</span> {capacity}%",
-        "format-plugged": "<span color='#D29922'>PLG</span> {capacity}%",
-        "tooltip": true
     },
     "pulseaudio#output": {
 		"format": "{icon} {volume}%",
@@ -140,9 +127,9 @@
 		"icon-size": 16
     },
     "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format": "  |{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{volume}%|",
         "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "format-stopped": " Stopped",
         "unknown-tag": "N/A",
         "interval": 3,
         "consume-icons": {
@@ -162,7 +149,7 @@
             "paused": "",
             "playing": ""
         },
-        "tooltip-format": "MPD (connected)",
+        "tooltip-format": "{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
     "network": {
@@ -181,6 +168,32 @@
         "on-click": "blueman-manager",
         "on-click-right": "bluetoothctl power $(bluetoothctl show | grep -q 'Powered: yes' && echo 'off' || echo 'on')"
     },
+    "custom/pacman": {
+        "format": "{}  ",
+        "exec": "checkupdates | wc -l",
+        "on-click": "pkill -RTMIN+8 waybar",
+        "on-click-right": "alacritty -e bash -lc 'checkupdates; echo; read -p \"Press Enter...\"'",
+        "signal": 8,
+        "tooltip": false
+    }
+},{
+    "output": "eDP-1",
+    "layer": "top",
+    "position": "bottom",
+    "exclusive": false,
+    "height": 35,
+    "spacing": 0,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": -5,
+    "margin-bottom": -5,
+    "modules-left": [],
+    "modules-center": [],
+    "modules-right": [
+            "custom/powerprofile",
+            "battery",
+            "tray"
+    ],
     "custom/powerprofile": {
         "format": "{}",
         "exec": "cpu-status.sh",
@@ -188,33 +201,21 @@
         "interval": 5,
         "escape": true
     },
-    "custom/pacman": {
-        "format": "{}  ",
-        "exec": "checkupdates | wc -l",
-        "on-click": "pkill -RTMIN+8 waybar",
-        "on-click-right": "alacritty -e bash -lc 'checkupdates; echo; read -p \"Press Enter...\"'",
-        "signal": 8
-    }
-},{
-    "output": "eDP-1",
-    "layer": "top",
-    "position": "bottom",
-    "exclusive": false,
-    "height": 40,
-    "spacing": 0,
-    "margin-top": 0,
-    "margin-left": 0,
-    "margin-right": 0,
-    "modules-left": [],
-    "modules-center": [],
-    "modules-right": [
-            "tray"
-    ],
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "<span color='#D29922'>BAT</span> {capacity}%",
+        "format-charging": "<span color='#D29922'>CHG</span> {capacity}%",
+        "format-plugged": "<span color='#D29922'>PLG</span> {capacity}%",
+        "tooltip": true
+    },
     "tray": {
         "spacing": 6,
-        "icon-size": 20,
+        "icon-size": 18,
         "show-passive-items": false
-    },
+    }
 },{
     "output": "HDMI-A-1",
     "layer": "top",
@@ -233,8 +234,6 @@
             //"mpd"
     ],
     "modules-right": [
-            "custom/powerprofile",
-            "battery",
             "keyboard-state#caps",
             "keyboard-state#num",
             "pulseaudio#output",
@@ -272,16 +271,6 @@
                 "today": "<span color='#539bf5'><b><u>{}</u></b></span>"
             }
         }
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "<span color='#D29922'>BAT</span> {capacity}%",
-        "format-charging": "<span color='#D29922'>CHG</span> {capacity}%",
-        "format-plugged": "<span color='#D29922'>PLG</span> {capacity}%",
-        "tooltip": true
     },
     "pulseaudio#output": {
         "format": "{icon} {volume}%",
@@ -398,11 +387,4 @@
         "on-click": "blueman-manager",
         "on-click-right": "bluetoothctl power $(bluetoothctl show | grep -q 'Powered: yes' && echo 'off' || echo 'on')"
     },
-    "custom/powerprofile": {
-        "format": "{}",
-        "exec": "cpu-status.sh",
-        "tooltip": false,
-        "interval": 5,
-        "escape": true
-    }
 }]
