@@ -1,0 +1,8 @@
+#!/bin/sh
+
+xinput set-prop "pointer:Logitech Wireless Mouse" "libinput Accel Speed" -0.5
+
+xrandr --output HDMI-1 --primary --auto --pos 0x0 \
+       --output eDP-1 --auto --pos 1920x0
+
+exit 0
