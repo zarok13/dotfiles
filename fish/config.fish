@@ -22,3 +22,8 @@ if status is-login
         set -gx XDG_SESSION_DESKTOP sway
     end
 end
+
+#if type -q tmux; and not set -q TMUX
+#    tmux attach -t default; or tmux new -s default
+#end
+

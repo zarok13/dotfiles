@@ -1,5 +1,5 @@
 pkgname=librewolf-bin
-pkgver=154.0_2
+pkgver=157.0_1
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}"
@@ -58,10 +58,10 @@ backup=('usr/lib/librewolf/librewolf.cfg'
         'usr/lib/librewolf/distribution/policies.json')
 install='librewolf-bin.install'
 
-_base_url=https://codeberg.org/api/packages/librewolf/generic/${pkgname//-bin/""}/$_firefoxver-$_librewolfver
-_uploadpath=${_base_url}/${pkgname//-bin/""}-$_firefoxver-$_librewolfver-linux-${CARCH}-package.tar.xz
+_base_url=https://codeberg.org/api/packages/librewolf/generic/${pkgname//-bin/""}/${pkgver//_/-}
+_uploadpath=${_base_url}/${pkgname//-bin/""}-${pkgver//_/-}-linux-${CARCH}-package.tar.xz
 _uploadpath_sig=${_uploadpath}.sig
-_source_tag="$_firefoxver-$_librewolfver"
+_source_tag="${pkgver//_/-}"
 source=(
   "git+https://codeberg.org/librewolf/source.git"
   librewolf.desktop
@@ -71,7 +71,7 @@ source=(
 
 sha256sums=('SKIP'
             '655da27e3cd0ea07ba04a51ee8a38b2eebf489cac2cc6a601b637040abc22f4d'
-            '28fbf8e3e175a1fabb2f625ae9733802d22eb480927c9cfa47b5ef92f947e58d'
+            '3422ac8dec9d490215fcfcb2657fd2b027e3b1f57dde594f8d4fc82470aa6235'
             'SKIP')
 
 pkgver() {

@@ -1,6 +1,6 @@
 
 pkgname=sublime-text-4
-pkgver=4.4200
+pkgver=4.4215
 pkgrel=1
 pkgdesc='Sophisticated text editor for code, html and prose - stable build'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,8 @@ source=(
     "${pkgname}.sh"
 )
 
-sha512sums=('ac56e9b7dddaebb3d222795cfc644109c93cc3f79695b8f9ee56022c74fe04a1134dd54cab07c74ff1f96b783cb3dbc026c16095552f1d2dd83115ea274dc2e9')
+sha512sums=('e49d032b4ee3b609913a9d8733f75e910f0b02accf9a77ce34a79bb1967140deaecfcf243989846b9d9e1a6fb09058ebf05676ed0981fac0c5d53ddb612e7d89'
+            '84f09e1787d5c9f2f1a93ef48adff69148d5fa48c455d82de9e0760bd18e58aa4f0d4c54c7d5c8a7ec6fc140e1c03e344cea9b90959f66577c576efcb96ac90e')
 
 pkgver() {
     local build

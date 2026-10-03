@@ -1,6 +1,6 @@
 
 pkgname=google-chrome
-pkgver=151.0.7922.173
+pkgver=154.0.8037.97
 pkgrel=1
 pkgdesc="The popular web browser by Google (Stable Channel)"
 arch=(x86_64)
@@ -29,7 +29,7 @@ source=(
 	'eula_text.html'
     "google-chrome-$_channel.sh"
 )
-sha512sums=('1c099aacfc9cdb9bfae159a05076c3d06e6c13352aefb87d840daf8594ec2d445d20ba1ba53c5e349a87c07394ea1a58613209faa3fe5c5f5dabaf0cbe2d79b0'
+sha512sums=('990f133f1091d0aea48cc0bfbcc8f303fee80d128a93f02f7910c0e0bb46c45ee96971879037cde100bb35899284fff4fe5b172ace9b9d5e6465d45f311d1ae0'
             'aa346ffe6adf3b0402abdf8f0abe6ec72c93238099af3a7c0dde86c6400792f4893a93325178746854564ba39ea5a3a6824ecf87277bf1a47c3c4e0a5853c474'
             '0d1879ad422c0bb86bd76211356b363d38f59cbd41af197518002e88705b7e615f27e8ac4251078709a55a945372cc80a2e4b779e4a2afd5017b02da0c78f7ab')
 

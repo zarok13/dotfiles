@@ -1,6 +1,6 @@
 
 pkgname=anydesk-bin
-pkgver=8.0.4
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="The Fast Remote Desktop Application"
 arch=(x86_64)
@@ -35,7 +35,7 @@ conflicts=('anydesk')
 provides=('anydesk')
 options=('!strip')
 source=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
-sha256sums=('7e0dec2dcbac86ee730efb016a41cb3ff151aa1bdab880b1f3aae5a4ae18916f')
+sha256sums=('22615f1ac8aa4f9ab2fa7344e38358bc6229e7e0b973b7b7fba04848336010db')
 
 pkgver() {
 	curl -s "http://deb.anydesk.com/dists/all/main/binary-amd64/Packages" |

@@ -1,168 +1,244 @@
-/* Polybar-inspired styling from bspwm-setup */
-@define-color bg #0d1117;
-@define-color bg-alt #2f363d;
-@define-color fg #d0d7de;
-@define-color primary #D29922;
-@define-color secondary #539bf5;
-@define-color disabled #4e5b55;
-@define-color alert #D29922;
+/* ~/.config/waybar/style.css
+   Gruvbox Dark, islands theme.
+   Audio (output+source) and connectivity (wifi+bluetooth) are grouped
+   into single shared pills; everything else is its own island. */
+
+@define-color bg0     #1d2021; /* bg0_h, darkest */
+@define-color bg1     #282828;
+@define-color bg2     #3c3836;
+@define-color bg3     #504945;
+@define-color bg4     #665c54;
+@define-color fg      #ebdbb2;
+@define-color fg2     #d5c4a1;
+@define-color gray    #a89984;
+
+@define-color red     #fb4934;
+@define-color green    #b8bb26;
+@define-color yellow   #fabd2f;
+@define-color blue     #83a598;
+@define-color purple   #d3869b;
+@define-color aqua     #8ec07c;
+@define-color orange   #fe8019;
 
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "Roboto Mono Nerd Font", "JetBrainsMono Nerd Font", monospace;
-    font-size: 15px;
+    /*font-family: 'JetBrains Mono Nerd Font', 'monospace';*/
+    font-family: 'FiraCode Nerd Font', 'monospace';
+    font-size: 16px;
+    font-weight: bold;
     min-height: 0;
 }
 
-
 window#waybar {
-    background-color: transparent;
-    color: @fg;
+    background: transparent;
 }
 
-window#waybar > box {
-    background-color: @bg;
-    border-radius: 6px;
-    margin: 6px 6px 0 6px;
-}
-
-
-/* Workspaces */
-#workspaces {
-    background-color: transparent;
-    padding-left: 4px;
-}
-
-#workspaces button {
-    padding: 0 12px;
-    background-color: transparent;
-    color: @fg;
-    border: none;
-    border-bottom: 3px solid transparent;
-    min-width: 28px;
-}
-
-#workspaces button.empty {
-    color: @disabled;
-}
-
-#workspaces button:hover {
-    background-color: @bg-alt;
-}
-
-/* Active/focused workspace - matches Polybar style */
-#workspaces button.focused {
-    background-color: @bg-alt;
-    color: @fg;
-    border-bottom: 3px solid @primary;
-}
-
-#workspaces button.urgent {
-    background-color: @alert;
-    color: @bg;
-}
-
-/* Separator styling */
-#custom-sep {
-    color: @disabled;
-    padding: 0 6px;
-}
-
-/* Window title */
-
-#window {
-    background-color: transparent;
-    color: #d65d0e;
-    font-weight: normal;
-    padding: 0 8px;
-}
-
-
-/* Right-side modules */
-#cpu,
-#memory,
-#disk,
-#pulseaudio,
-#network,
-#battery,
-#clock,
-#tray,
+/* ---------- Shared island shell ---------- */
+#workspaces,
+#clock.time,
+#idle_inhibitor,
+#custom-pacman,
+#mpd,
+#audio,
+#connectivity,
+#language,
 #custom-notification,
-#custom-screenshot,
-#bluetooth
-#custom-powermenu  {
-    padding: 0 10px;
-    background-color: transparent;
+#custom-powerprofile,
+#battery,
+#tray {
+    background-color: alpha(@bg2, 0.7);
     color: @fg;
+    border: 1px solid @bg4;
+    border-radius: 999px;
+    padding: 0 8px;
+    margin: 4px 3px;
+}
+
+/* Interactive islands lift slightly on hover */
+#workspaces button:hover,
+#audio:hover,
+#connectivity:hover,
+#custom-notification:hover,
+#custom-pacman:hover,
+#language:hover,
+#idle_inhibitor:hover,
+#mpd:hover {
+    background-color: alpha(@bg3, 0.95);
+}
+
+/* ---------- Workspaces ---------- */
+#workspaces {
+    padding: 1px 6px;
+    margin-left: 8px;
+}
+#workspaces button {
+    color: @gray;
+    background: transparent;
+    border-radius: 10px;
+    padding: 1px 8px;
+    margin: 2px;
+    transition: all 0.15s ease-in-out;
+}
+#workspaces button.focused,
+#workspaces button.active {
+    color: @bg0;
+    background-color: @yellow;
+    padding: 1px 9px;
+}
+#workspaces button.urgent {
+    color: @bg0;
+    background-color: @red;
+}
+
+/* ---------- Center cluster ---------- */
+#custom-notification {
+    color: @orange;
+}
+#clock.time {
+    color: @bg0;
+    background-color: alpha(@yellow, 0.70);
+    border: none;
+    font-weight: 700;
+    padding: 0 12px;
+}
+#clock.time:hover {
+    background-color: alpha(@yellow, 0.95);
+}
+#idle_inhibitor {
+    color: @aqua;
+}
+#custom-pacman {
+    color: @green;
+}
+#mpd {
+    color: @fg;
+}
+#mpd.disconnected,
+#mpd.stopped {
+    color: @gray;
+}
+
+/* ---------- Right cluster ---------- */
+/* Keyboard indicators: invisible by default, only appear (as their own
+   small pill) while Caps Lock / Num Lock is actually on. The "locked"
+   class is added by Waybar to the label itself when that key is active. */
+#keyboard {
+    margin: 0;
+    padding: 0;
+}
+#keyboard-state.caps,
+#keyboard-state.num {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+#keyboard-state.caps label,
+#keyboard-state.num label {
+    opacity: 0;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border-radius: 12px;
+    transition: all 0.15s ease-in-out;
+}
+#keyboard-state.caps label.locked,
+#keyboard-state.num label.locked {
+    opacity: 1;
+    color: @bg0;
+    background-color: @orange;
+    padding: 0 6px;
+    margin: 4px 3px;
+    min-width: 10px;
+}
+
+/* Grouped pill: audio (output + source share one island) */
+#audio {
+    padding: 0 4px;
+}
+#audio #pulseaudio.output,
+#audio #pulseaudio.source {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0 4px;
+}
+#audio #pulseaudio.output {
+    color: @aqua;
+}
+#audio #pulseaudio.source {
+    color: @blue;
+    border-left: 1px solid @bg4;
+}
+
+/* Grouped pill: connectivity (wifi + bluetooth share one island) */
+#connectivity {
+    padding: 0 4px;
+}
+#connectivity #network,
+#connectivity #bluetooth {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0 4px;
+}
+#connectivity #network {
+    color: @blue;
+}
+#connectivity #network.disconnected,
+#connectivity #network.disabled {
+    color: @red;
+}
+#connectivity #bluetooth {
+    color: @purple;
+    border-left: 1px solid @bg4;
 }
 
 #language {
-    min-width: 30px; /* Increase this value if you still see dots */
-    padding: 0 5px;  /* Optional: adds a bit of breathing room */
-}
-
-#cpu {
-    padding-left: 10px;
-}
-
-#clock.date {
-    color: @fg;
-}
-
-#clock.time {
-    color: @primary;
-}
-
-#custom-network,
-#custom-notification,
-#custom-screenshot,
-#custom-powermenu {
-    padding: 0 8px;
-}
-
-#custom-network {
-    color: @fg;
-}
-
-#custom-notification {
-    color: @fg;
-}
-
-#custom-screenshot {
-    color: @secondary;
-}
-
-#custom-powermenu {
-    color: @alert;
-    padding-right: 10px;
-}
-
-#tray {
-    background-color: transparent;
-    padding: 0 8px;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-}
-
-/* Caps lock indicator */
-#keyboard-state label.locked {
-    background-color: @alert;
-    color: @bg;
+    color: @orange;
     padding: 0 6px;
 }
 
-#idle_inhibitor {
-    padding-right: 10px;
+/* ---------- Bottom bar ---------- */
+#custom-powerprofile {
+    color: @aqua;
+}
+#battery {
+    color: @yellow;
+}
+#battery.warning {
+    color: @orange;
+}
+#battery.critical {
+    color: @bg0;
+    background-color: @red;
+    border: none;
+}
+#battery.charging,
+#battery.plugged {
+    color: @green;
 }
 
-#custom-pacman{
-    color: #2ecc71;
-    padding: 0 10px;
+#tray {
+    padding: 0 7px;
+    margin-right: 8px;
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+    border-radius: 8px;
+}
+
+/* ---------- Tooltips ---------- */
+tooltip {
+    background: @bg1;
+    border: 1px solid @bg3;
+    border-radius: 12px;
+}
+tooltip label {
+    color: @fg;
+    padding: 4px;
 }
