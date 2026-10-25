@@ -2,37 +2,43 @@
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
     "logo": {
         "type": "builtin",
-        "height": 15,
-        "width": 30,
+        "source": "EndeavourOS_small",
+        "height": 2,
+        "width": 5,
         "padding": {
-            "top": 5,
-            "left": 3
+            "top": 1,
+            "left": 1,
+            "right": 2
         }
     },
     "modules": [
         {
             "type": "custom",
-            "format": "\u001b[90m┌──────────────────────Hardware──────────────────────┐"
+            "format": "\u001b[90m┌──────────────Hardware──────────────┐"
         },
         {
             "type": "host",
             "key": "󰌢  PC",
-            "keyColor": "green"
+            "keyColor": "green",
+            "format": "{name}"
         },
         {
             "type": "cpu",
             "key": "│ ├󰻠 ",
-            "keyColor": "green"
+            "keyColor": "green",
+            "format": "{name}" 
         },
         {
             "type": "gpu",
             "key": "│ ├󰢮 ",
-            "keyColor": "green"
+            "keyColor": "green",
+            "format": "{name}" 
         },
         {
             "type": "display",
             "key": "│ ├󰍹 ",
-            "keyColor": "green"
+            "keyColor": "green",
+            "format": "{width}x{height} @ {refresh-rate}Hz"
         },
         {
             "type": "memory",
@@ -42,7 +48,8 @@
         {
             "type": "disk",
             "key": "│ ├󰋊 ",
-            "keyColor": "green"
+            "keyColor": "green",
+            "format": "{size-used} / {size-total} ({size-percentage})"
         },
         {
             "type": "swap",
@@ -56,11 +63,11 @@
         },
         {
             "type": "custom",
-            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+            "format": "\u001b[90m└────────────────────────────────────┘"
         },
         {
             "type": "custom",
-            "format": "\u001b[90m┌──────────────────────Software──────────────────────┐"
+            "format": "\u001b[90m┌──────────────Software──────────────┐"
         },
         {
             "type": "os",
@@ -106,7 +113,8 @@
         {
             "type": "wmtheme",
             "key": "│ ├󰉦 ",
-            "keyColor": "blue"
+            "keyColor": "blue",
+            "format": "{name}"
         },
         {
             "type": "terminal",
@@ -116,7 +124,8 @@
         {
             "type": "terminalfont",
             "key": "│ ├󰛖 ",
-            "keyColor": "blue"
+            "keyColor": "blue",
+            "format": "{name}"
         },
         {
             "type": "theme",
@@ -140,11 +149,11 @@
         },
         {
             "type": "custom",
-            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+            "format": "\u001b[90m└────────────────────────────────────┘"
         },
         {
             "type": "custom",
-            "format": "\u001b[90m┌────────────────────Uptime / Age / DT────────────────────┐"
+            "format": "\u001b[90m┌───────────Uptime/Age/DT────────────┐"
         },
         {
             "type": "command",
@@ -169,7 +178,7 @@
         },
         {
             "type": "custom",
-            "format": "\u001b[90m└─────────────────────────────────────────────────────────┘"
+            "format": "\u001b[90m└────────────────────────────────────┘"
         },
         {
             "type": "colors",

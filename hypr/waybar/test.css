@@ -1,0 +1,304 @@
+/* ~/.config/waybar/style.css
+   Gruvbox Dark, islands theme.
+   Audio (output+source) and connectivity (wifi+bluetooth) are grouped
+   into single shared pills; everything else is its own island. */
+
+@define-color bg0     #1d2021; /* bg0_h, darkest */
+@define-color bg1     #282828;
+@define-color bg2     #3c3836;
+@define-color bg3     #504945;
+@define-color bg4     #665c54;
+@define-color fg      #ebdbb2;
+@define-color fg2     #d5c4a1;
+@define-color gray    #a89984;
+
+@define-color red     #fb4934;
+@define-color green    #b8bb26;
+@define-color yellow   #fabd2f;
+@define-color blue     #83a598;
+@define-color purple   #d3869b;
+@define-color aqua     #8ec07c;
+@define-color orange   #fe8019;
+
+* {
+    /*font-family: 'JetBrains Mono Nerd Font', 'monospace';*/
+    font-family: 'FiraCode Nerd Font', 'monospace';
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+#workspaces {
+    font-family: 'JetBrainsMono Nerd Font', 'monospace';
+}
+
+#workspaces button label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+/* ---------- Shared island shell ---------- */
+#workspaces,
+#clock.time,
+#idle_inhibitor,
+#custom-pacman,
+#mpd,
+#audio,
+#connectivity,
+#language,
+#custom-notification,
+#custom-powerprofile,
+#battery,
+#tray {
+    background-color: alpha(@bg2, 0.7);
+    color: @fg;
+    border: 1px solid @bg4;
+    border-radius: 999px;
+    padding: 0 8px;
+    margin: 4px 3px;
+}
+
+/* Interactive islands lift slightly on hover */
+#workspaces button:hover,
+#audio:hover,
+#connectivity:hover,
+#custom-notification:hover,
+#custom-pacman:hover,
+#language:hover,
+#idle_inhibitor:hover,
+#mpd:hover {
+    background-color: alpha(@bg3, 0.95);
+}
+
+/* ---------- Workspaces ---------- */
+#workspaces {
+    padding: 1px 6px;
+    margin-left: 8px;
+}
+#workspaces button {
+    color: @gray;
+    background: transparent;
+    border-radius: 10px;
+    padding: 1px 8px;
+    margin: 2px;
+    transition: all 0.15s ease-in-out;
+}
+#workspaces button.focused,
+#workspaces button.active {
+    color: @bg0;
+    background-color: @yellow;
+    padding: 1px 9px;
+}
+#workspaces button.urgent {
+    color: @bg0;
+    background-color: @red;
+}
+/*--------WS---------*/
+#custom-ws1,
+#custom-ws2,
+#custom-ws3,
+#custom-ws4,
+#custom-ws5,
+#custom-ws6,
+#custom-ws7,
+#custom-ws8,
+#custom-ws9 {
+    color: @gray;
+    background: transparent;
+    border-radius: 10px;
+    padding: 1px 8px;
+    margin: 2px;
+    transition: all 0.15s ease-in-out;
+}
+
+#custom-ws1.active,
+#custom-ws2.active,
+#custom-ws3.active,
+#custom-ws4.active,
+#custom-ws5.active,
+#custom-ws6.active,
+#custom-ws7.active,
+#custom-ws8.active,
+#custom-ws9.active {
+    color: @bg0;
+    background-color: @yellow;
+    padding: 1px 9px;
+}
+
+#custom-ws1.urgent,
+#custom-ws2.urgent,
+#custom-ws3.urgent,
+#custom-ws4.urgent,
+#custom-ws5.urgent,
+#custom-ws6.urgent,
+#custom-ws7.urgent,
+#custom-ws8.urgent,
+#custom-ws9.urgent {
+    color: @bg0;
+    background-color: @red;
+}
+
+/* replaces #workspaces { padding: 1px 6px; margin-left: 8px; } */
+#custom-ws1 {
+    margin-left: 14px;
+}
+
+
+/* ---------- Center cluster ---------- */
+#custom-notification {
+    color: @orange;
+}
+#clock.time {
+    color: @bg0;
+    background-color: alpha(@yellow, 0.70);
+    border: none;
+    font-weight: 700;
+    padding: 0 12px;
+}
+#clock.time:hover {
+    background-color: alpha(@yellow, 0.95);
+}
+#idle_inhibitor {
+    color: @aqua;
+}
+#custom-pacman {
+    color: @green;
+}
+#mpd {
+    color: @fg;
+}
+#mpd.disconnected,
+#mpd.stopped {
+    color: @gray;
+}
+
+/* ---------- Right cluster ---------- */
+/* Keyboard indicators: invisible by default, only appear (as their own
+   small pill) while Caps Lock / Num Lock is actually on. The "locked"
+   class is added by Waybar to the label itself when that key is active. */
+#keyboard {
+    margin: 0;
+    padding: 0;
+}
+#keyboard-state.caps,
+#keyboard-state.num {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+#keyboard-state.caps label,
+#keyboard-state.num label {
+    opacity: 0;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border-radius: 12px;
+    transition: all 0.15s ease-in-out;
+}
+#keyboard-state.caps label.locked,
+#keyboard-state.num label.locked {
+    opacity: 1;
+    color: @bg0;
+    background-color: @orange;
+    padding: 0 6px;
+    margin: 4px 3px;
+    min-width: 10px;
+}
+
+/* Grouped pill: audio (output + source share one island) */
+#audio {
+    padding: 0 4px;
+}
+#audio #pulseaudio.output,
+#audio #pulseaudio.source {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0 4px;
+}
+#audio #pulseaudio.output {
+    color: @aqua;
+}
+#audio #pulseaudio.source {
+    color: @blue;
+    border-left: 1px solid @bg4;
+}
+
+/* Grouped pill: connectivity (wifi + bluetooth share one island) */
+#connectivity {
+    padding: 0 4px;
+}
+#connectivity #network,
+#connectivity #bluetooth {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0 4px;
+}
+#connectivity #network {
+    color: @blue;
+}
+#connectivity #network.disconnected,
+#connectivity #network.disabled {
+    color: @red;
+}
+#connectivity #bluetooth {
+    color: @purple;
+    border-left: 1px solid @bg4;
+}
+
+#language {
+    color: @orange;
+    padding: 0 6px;
+}
+
+/* ---------- Bottom bar ---------- */
+#custom-powerprofile {
+    color: @aqua;
+}
+#battery {
+    color: @yellow;
+}
+#battery.warning {
+    color: @orange;
+}
+#battery.critical {
+    color: @bg0;
+    background-color: @red;
+    border: none;
+}
+#battery.charging,
+#battery.plugged {
+    color: @green;
+}
+
+#tray {
+    padding: 0 7px;
+    margin-right: 8px;
+}
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+    border-radius: 8px;
+}
+
+/* ---------- Tooltips ---------- */
+tooltip {
+    background: @bg1;
+    border: 1px solid @bg3;
+    border-radius: 12px;
+}
+tooltip label {
+    color: @fg;
+    padding: 4px;
+}
+

@@ -242,11 +242,11 @@ super + Return
 
 # Power Menu
 super + x
-    $HOME/.config/rofi/powermenu/type-1/powermenu.sh
+    $HOME/.config/rofi/powermenu/powermenu.sh
 
 # Power Modes
 super + m
-    $HOME/.config/rofi/powermenu/type-2/powermenu.sh
+    $HOME/.config/rofi/powermenu/powermenu.sh
 
 #################################################################
 # SUPER + SHIFT KEYS

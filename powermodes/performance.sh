@@ -37,7 +37,7 @@ fi
 # 6. Turbo Boost
 #enable: 0, disable: 1
 if [ -f /sys/devices/system/cpu/intel_pstate/no_turbo ]; then
-    echo "1" | tee /sys/devices/system/cpu/intel_pstate/no_turbo
+    echo "0" | tee /sys/devices/system/cpu/intel_pstate/no_turbo
 fi
 
 echo "Balance performance profile applied."

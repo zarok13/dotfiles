@@ -1,0 +1,32 @@
+#!/bin/bash
+pidof swaylock >/dev/null && exit 0
+swaylock -f \
+    --screenshots \
+    --clock \
+    --timestr "%H:%M" \
+    --indicator \
+    --indicator-radius 100 \
+    --indicator-thickness 7 \
+    --effect-blur 7x5 \
+    --effect-vignette 0.5:0.5 \
+    --effect-greyscale \
+    --ring-color a89984 \
+    --ring-clear-color fabd2f \
+    --ring-ver-color 83a598 \
+    --ring-wrong-color fb4934 \
+    --key-hl-color fe8019 \
+    --bs-hl-color fb4934 \
+    --inside-color 28282888 \
+    --inside-clear-color 28282888 \
+    --inside-ver-color 28282888 \
+    --inside-wrong-color 28282888 \
+    --line-color 00000000 \
+    --separator-color 00000000 \
+    --text-color ebdbb2 \
+    --text-clear-color fabd2f \
+    --text-ver-color 83a598 \
+    --text-wrong-color fb4934 \
+    --fade-in 0.1 \
+    --font-size 25 \
+    --layout-bg-color 00000000 \
+    --layout-text-color 928374

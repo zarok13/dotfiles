@@ -15,13 +15,16 @@ starship init fish | source
 set -gx EDITOR vim
 
 if status is-login
-    # Check if Sway or Wayland is targeted
-    if test "$XDG_SESSION_TYPE" = "wayland" -o "$XDG_CURRENT_DESKTOP" = "sway"
+    if test "$XDG_SESSION_TYPE" = "wayland"
         set -gx QT_QPA_PLATFORM wayland
+    end
+
+    if test "$XDG_CURRENT_DESKTOP" = "sway"
         set -gx XDG_CURRENT_DESKTOP sway
         set -gx XDG_SESSION_DESKTOP sway
     end
 end
+
 
 #if type -q tmux; and not set -q TMUX
 #    tmux attach -t default; or tmux new -s default
