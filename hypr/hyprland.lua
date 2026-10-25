@@ -118,4 +118,46 @@ require('conf.keys')
 ---- WINDOWS AND WORKSPACES ----
 require('conf.rules')
 
+---- PLUGINS CONF ----
+
+hl.config({
+    plugin = {
+--[[
+        borders_plus_plus = {
+            add_borders = 2,
+            natural_rounding = true,
+            col = {
+                border_1 = "rgb(ffffff)",
+                border_2 = "#008000",
+            },
+            border_size_1 = 5,
+            border_size_2 = 5,
+        }
+]]
+--[==[
+        hyprbars = {
+            bar_height = 30,
+            on_double_click = [[hyprctl dispatch 'hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" })']],
+        },
+]==]
+--[==[
+        hyprfocus = {
+            enable = true,
+            animate_floating = true,
+            keyboard_focus_animation = "flash", -- none, flash, shrink, slide
+            mouse_focus_animation = "none",
+            fade_opacity = 0.8,
+        },
+]==]
+    },
+})
+--[==[
+hl.plugin.hyprbars.add_button({
+    bg_color = "rgb(ff4040)",
+    fg_color = "rgb(ffffff)",
+    size = 20,
+    icon = "X",
+    action = "hyprctl dispatch 'hl.dsp.window.close()'",
+})
+]==]
 
