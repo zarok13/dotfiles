@@ -1,0 +1,4 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR fish_color_command:brgreen
+SETUVAR fish_user_paths:/home/zarok/\x2ebin\x1e/home/zarok/\x2elocal/bin\x1e/var/lib/flatpak/exports/bin/
