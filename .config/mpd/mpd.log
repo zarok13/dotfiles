@@ -40,3 +40,20 @@
 2026-10-27T10:42:19 update: added /Pennywise Sings a Song.mp3
 2026-10-27T10:42:19 update: added /SSSR_-_Command_and_Conquer_General.mp3
 2026-10-27T10:42:19 update: added /Yanni Top Songs - The Very Best of Yanni (Full Album).mp3
+2026-10-29T12:47:21 exception: Failed to open /home/zarok/.config/mpd/playlists: No such file or directory
+2026-10-29T12:47:28 exception: Failed to open /home/zarok/.config/mpd/playlists: No such file or directory
+2026-10-29T12:47:28 exception: Failed to open /home/zarok/.config/mpd/playlists: No such file or directory
+2026-10-29T12:47:31 exception: Failed to open /home/zarok/.config/mpd/playlists: No such file or directory
+2026-10-29T12:47:32 exception: Failed to open /home/zarok/.config/mpd/playlists: No such file or directory
+2026-10-29T12:48:04 ffmpeg/opus: Could not update timestamps for skipped samples.
+2026-10-29T12:48:18 ffmpeg/opus: Could not update timestamps for skipped samples.
+2026-10-29T12:48:21 ffmpeg/opus: Could not update timestamps for skipped samples.
+2026-10-29T12:48:26 ffmpeg/opus: Could not update timestamps for skipped samples.
+2026-10-29T12:48:27 ffmpeg/opus: Could not update timestamps for skipped samples.
+2026-10-29T17:38:37 exception: Failed to open /home/zarok/.config/mpd/playlists: No such file or directory
+2026-10-30T00:17:38 player: played "Albums/E NOMINE Die Prophezeiung.mp3"
+2026-10-30T10:36:37 exception: Failed to open /home/zarok/.config/mpd/playlists: No such file or directory
+2026-10-30T11:56:23 ffmpeg/opus: Could not update timestamps for skipped samples.
+2026-10-30T11:57:06 player: played "Albums/E NOMINE Die Prophezeiung.mp3"
+2026-10-30T16:32:23 player: played "Albums/Ghost of Tsushima ｜ Full Soundtrack.mp3"
+2026-10-30T16:35:09 player: played "Albums/Come A Little Bit Closer - Jay & The Americans ｜ TV Spot [Guardians of the Galaxy Volume 2].mp3"

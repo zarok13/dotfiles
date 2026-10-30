@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 
 # Current Theme
-dir="$HOME/.config/rofi/powermenu/type-1"
+dir="$HOME/.config/rofi/powermenu/powermenu"
 theme='style-1'
-
-# CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
 
 # Options
 lock='󰌾 Lock'
@@ -20,7 +17,6 @@ no='󰜺 No'
 rofi_cmd() {
 	rofi -dmenu \
 		-p "power menu" \
-		-mesg "Uptime: $uptime" \
 		-theme ${dir}/${theme}.rasi
 }
 

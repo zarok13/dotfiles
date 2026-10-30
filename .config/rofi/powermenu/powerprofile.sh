@@ -1,19 +1,19 @@
-dir="$HOME/.config/rofi/powermenu/type-2"
-theme='style-8'
+dir="$HOME/.config/rofi/powermenu/powerprofile"
+theme='style-2'
 
 
-powersave='󰌪 '
-balance=' '
+powersave='󰾆 '
+balance='󰾅 '
 performance='󰓅 '
-turbo='󱐋'
-yes=''
-no='󰜺'
+turbo='󰈸'
+yes='󰄬 '
+no='󰜺 '
 rofi_cmd() {
 	rofi -dmenu \
 		-theme ${dir}/${theme}.rasi
 }
 confirm_cmd() {
-	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
+	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
 		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
 		-theme-str 'listview {columns: 2; lines: 1;}' \
 		-theme-str 'element-text {horizontal-align: 0.5;}' \

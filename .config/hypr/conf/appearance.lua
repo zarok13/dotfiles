@@ -7,7 +7,8 @@ hl.config({
 
         col = {
             -- gruvbox yellow -> orange
-            active_border   = { colors = {"rgba(fabd2fff)", "rgba(d65d0eff)"}, angle = 90 },
+            --active_border   = { colors = {"rgba(fabd2fff)", "rgba(d65d0eff)"}, angle = 90 },
+            active_border = "rgba(d79921ff)",
             -- gruvbox bg2
             inactive_border = "rgba(504945aa)",
         },

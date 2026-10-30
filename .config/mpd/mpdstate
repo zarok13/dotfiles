@@ -1,8 +1,9 @@
 sw_volume: 50
 audio_device_state:1:pipewire audio
 audio_device_state:1:my_fifo
-state: stop
-current: 12
+state: pause
+current: 0
+time: 914.3870000000001
 random: 1
 repeat: 1
 single: 0
@@ -12,166 +13,10 @@ mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:generals перезарядка.MP3
-1:Pennywise Sings a Song.mp3
-2:SSSR_-_Command_and_Conquer_General.mp3
-3:Albums/All Sith Themes 1 Hour.mp3
-4:Albums/Baroque Music - History of Baroque Music.webm
-5:Albums/BEST OF PROFESSOR LAYTON MUSIC (HIGH QUALITY).webm
-6:Albums/Bobby Vinton - Over the Mountain (Across the Sea) ｜ Godzilla vs. Kong OST.mp3
-7:Albums/Come A Little Bit Closer - Jay & The Americans ｜ TV Spot [Guardians of the Galaxy Volume 2].mp3
-8:Albums/Dark Chest of Wonders.mp3
-9:Albums/E NOMINE Die Prophezeiung.mp3
-10:Albums/Ghost of Tsushima ｜ Full Soundtrack.mp3
-11:Albums/Guardians of the Galaxy： Awesome Mix (Vol. 1 & Vol. 2) (Full Soundtrack).mp3
-12:Albums/Judas Priest - Breaking the Law ｜ Godzilla vs. Kong OST.mp3
-13:Albums/Kitaro - The Classics Collection ｜ Volume 2.mp3
-14:Albums/Lesiëm ‎- Mystic Spirit Voices (1999) [Full Album].mp3
-15:Albums/Metal Gear Solid (PS1⧸PC) Complete Soundtrack.mp3
-16:Albums/Powerwolf Greatest Hits Playlist 2022.mp3
-17:Albums/PS1 MediEvil 2 Full Soundtrack (Complete OST).mp3
-18:Albums/SIRENIA - Dim Days Of Dolor (Official Video)  Napalm Records.mp3
-19:Albums/SIRENIA - Into The Night (Official Video)  Napalm Records.mp3
-20:Albums/SIRENIA - The 12th Hour (Official Lyric Video)  Napalm Records.mp3
-21:Albums/SIRENIA - The Other Side (OFFICIAL MUSIC VIDEO).mp3
-22:Albums/SIRENIA - The Path To Decay (OFFICIAL MUSIC VIDEO).mp3
-23:Albums/Star Wars EPIC Music Compilation.mp3
-24:Albums/Steampunk & Fantasy Music Collection by Luis Humanoide ｜ 1-hour mix ｜ Music from the Clockwork Lands.mp3
-25:Albums/Tarja - I Walk Alone (Video Single Version).mp3
-26:Albums/Tarja - Until My Last Breath.mp3
-27:Albums/Tarja Angels (Within Temptation cover).mp3
-28:Albums/The best OF YANNI-YANNI Greatest Hits FULL Album 2020- Yanni Piano Playlist.mp3
-29:Albums/The Hollies - The Air That I Breathe ｜ Godzilla vs. Kong OST.mp3
-30:Albums/The Music of Command & Conquer  [album].mp3
-31:Albums/Two Steps From Hell & Thomas Bergersen - 36 Tracks Best of All time ｜ Most Powerful Epic Music Mix.mp3
-32:Albums/Vagrant story full ost.mp3
-33:Albums/VISIONS OF ATLANTIS - The Deep & The Dark (Official Video)  Napalm Records.mp3
-34:Albums/Xandria   — The Wonders Still Awaiting  (2023) (Full Album).mp3
-35:Albums/Xandria - Come With Me (With Lyrics).mp3
-36:Albums/Xandria - Dreamkeeper (With Lyrics).mp3
-37:Albums/惡魔城X 月下夜想曲 BGM【Castlevania Symphony of the Night OST】.mp3
-38:Albums/The Greatest Show on Earth.mp3
-39:Albums/Lost Northern Star.mp3
-40:generals перезарядка.MP3
-41:Pennywise Sings a Song.mp3
-42:SSSR_-_Command_and_Conquer_General.mp3
-43:Albums/All Sith Themes 1 Hour.mp3
-44:Albums/Baroque Music - History of Baroque Music.webm
-45:Albums/BEST OF PROFESSOR LAYTON MUSIC (HIGH QUALITY).webm
-46:Albums/Bobby Vinton - Over the Mountain (Across the Sea) ｜ Godzilla vs. Kong OST.mp3
-47:Albums/Come A Little Bit Closer - Jay & The Americans ｜ TV Spot [Guardians of the Galaxy Volume 2].mp3
-48:Albums/Dark Chest of Wonders.mp3
-49:Albums/E NOMINE Die Prophezeiung.mp3
-50:Albums/Guardians of the Galaxy： Awesome Mix (Vol. 1 & Vol. 2) (Full Soundtrack).mp3
-51:Albums/Judas Priest - Breaking the Law ｜ Godzilla vs. Kong OST.mp3
-52:Albums/Kitaro - The Classics Collection ｜ Volume 2.mp3
-53:Albums/Lesiëm ‎- Mystic Spirit Voices (1999) [Full Album].mp3
-54:Albums/Metal Gear Solid (PS1⧸PC) Complete Soundtrack.mp3
-55:Albums/Powerwolf Greatest Hits Playlist 2022.mp3
-56:Albums/PS1 MediEvil 2 Full Soundtrack (Complete OST).mp3
-57:Albums/SIRENIA - Dim Days Of Dolor (Official Video)  Napalm Records.mp3
-58:Albums/SIRENIA - Into The Night (Official Video)  Napalm Records.mp3
-59:Albums/SIRENIA - My Mind's Eye (OFFICIAL MUSIC VIDEO).mp3
-60:Albums/SIRENIA - The Other Side (OFFICIAL MUSIC VIDEO).mp3
-61:Albums/SIRENIA - The 12th Hour (Official Lyric Video)  Napalm Records.mp3
-62:Albums/SIRENIA - The Path To Decay (OFFICIAL MUSIC VIDEO).mp3
-63:Albums/Star Wars EPIC Music Compilation.mp3
-64:Albums/Steampunk & Fantasy Music Collection by Luis Humanoide ｜ 1-hour mix ｜ Music from the Clockwork Lands.mp3
-65:Albums/Tarja - I Walk Alone (Video Single Version).mp3
-66:Albums/Tarja - Until My Last Breath.mp3
-67:Albums/Tarja Angels (Within Temptation cover).mp3
-68:Albums/The best OF YANNI-YANNI Greatest Hits FULL Album 2020- Yanni Piano Playlist.mp3
-69:Albums/The Hollies - The Air That I Breathe ｜ Godzilla vs. Kong OST.mp3
-70:Albums/The Music of Command & Conquer  [album].mp3
-71:Albums/Two Steps From Hell & Thomas Bergersen - 36 Tracks Best of All time ｜ Most Powerful Epic Music Mix.mp3
-72:Albums/Vagrant story full ost.mp3
-73:Albums/VISIONS OF ATLANTIS - The Deep & The Dark (Official Video)  Napalm Records.mp3
-74:Albums/Xandria   — The Wonders Still Awaiting  (2023) (Full Album).mp3
-75:Albums/Xandria - Come With Me (With Lyrics).mp3
-76:Albums/Xandria - Dreamkeeper (With Lyrics).mp3
-77:Albums/惡魔城X 月下夜想曲 BGM【Castlevania Symphony of the Night OST】.mp3
-78:Albums/The Greatest Show on Earth.mp3
-79:Albums/Lost Northern Star.mp3
-80:generals перезарядка.MP3
-81:Pennywise Sings a Song.mp3
-82:SSSR_-_Command_and_Conquer_General.mp3
-83:Albums/All Sith Themes 1 Hour.mp3
-84:Albums/Baroque Music - History of Baroque Music.webm
-85:Albums/BEST OF PROFESSOR LAYTON MUSIC (HIGH QUALITY).webm
-86:Albums/Bobby Vinton - Over the Mountain (Across the Sea) ｜ Godzilla vs. Kong OST.mp3
-87:Albums/Come A Little Bit Closer - Jay & The Americans ｜ TV Spot [Guardians of the Galaxy Volume 2].mp3
-88:Albums/Dark Chest of Wonders.mp3
-89:Albums/E NOMINE Die Prophezeiung.mp3
-90:Albums/Ghost of Tsushima ｜ Full Soundtrack.mp3
-91:Albums/Guardians of the Galaxy： Awesome Mix (Vol. 1 & Vol. 2) (Full Soundtrack).mp3
-92:Albums/Judas Priest - Breaking the Law ｜ Godzilla vs. Kong OST.mp3
-93:Albums/Kitaro - The Classics Collection ｜ Volume 2.mp3
-94:Albums/Lesiëm ‎- Mystic Spirit Voices (1999) [Full Album].mp3
-95:Albums/Metal Gear Solid (PS1⧸PC) Complete Soundtrack.mp3
-96:Albums/Powerwolf Greatest Hits Playlist 2022.mp3
-97:Albums/PS1 MediEvil 2 Full Soundtrack (Complete OST).mp3
-98:Albums/SIRENIA - Dim Days Of Dolor (Official Video)  Napalm Records.mp3
-99:Albums/SIRENIA - Into The Night (Official Video)  Napalm Records.mp3
-100:Albums/SIRENIA - My Mind's Eye (OFFICIAL MUSIC VIDEO).mp3
-101:Albums/SIRENIA - The 12th Hour (Official Lyric Video)  Napalm Records.mp3
-102:Albums/SIRENIA - The Other Side (OFFICIAL MUSIC VIDEO).mp3
-103:Albums/SIRENIA - The Path To Decay (OFFICIAL MUSIC VIDEO).mp3
-104:Albums/Star Wars EPIC Music Compilation.mp3
-105:Albums/Steampunk & Fantasy Music Collection by Luis Humanoide ｜ 1-hour mix ｜ Music from the Clockwork Lands.mp3
-106:Albums/Tarja - I Walk Alone (Video Single Version).mp3
-107:Albums/Tarja - Until My Last Breath.mp3
-108:Albums/Tarja Angels (Within Temptation cover).mp3
-109:Albums/The best OF YANNI-YANNI Greatest Hits FULL Album 2020- Yanni Piano Playlist.mp3
-110:Albums/The Hollies - The Air That I Breathe ｜ Godzilla vs. Kong OST.mp3
-111:Albums/The Music of Command & Conquer  [album].mp3
-112:Albums/Two Steps From Hell & Thomas Bergersen - 36 Tracks Best of All time ｜ Most Powerful Epic Music Mix.mp3
-113:Albums/Vagrant story full ost.mp3
-114:Albums/VISIONS OF ATLANTIS - The Deep & The Dark (Official Video)  Napalm Records.mp3
-115:Albums/Xandria   — The Wonders Still Awaiting  (2023) (Full Album).mp3
-116:Albums/Xandria - Come With Me (With Lyrics).mp3
-117:Albums/Xandria - Dreamkeeper (With Lyrics).mp3
-118:Albums/惡魔城X 月下夜想曲 BGM【Castlevania Symphony of the Night OST】.mp3
-119:Albums/The Greatest Show on Earth.mp3
-120:Albums/Lost Northern Star.mp3
-121:generals перезарядка.MP3
-122:Pennywise Sings a Song.mp3
-123:SSSR_-_Command_and_Conquer_General.mp3
-124:Albums/All Sith Themes 1 Hour.mp3
-125:Albums/Baroque Music - History of Baroque Music.webm
-126:Albums/BEST OF PROFESSOR LAYTON MUSIC (HIGH QUALITY).webm
-127:Albums/Bobby Vinton - Over the Mountain (Across the Sea) ｜ Godzilla vs. Kong OST.mp3
-128:Albums/Come A Little Bit Closer - Jay & The Americans ｜ TV Spot [Guardians of the Galaxy Volume 2].mp3
-129:Albums/Dark Chest of Wonders.mp3
-130:Albums/E NOMINE Die Prophezeiung.mp3
-131:Albums/Ghost of Tsushima ｜ Full Soundtrack.mp3
-132:Albums/Guardians of the Galaxy： Awesome Mix (Vol. 1 & Vol. 2) (Full Soundtrack).mp3
-133:Albums/Judas Priest - Breaking the Law ｜ Godzilla vs. Kong OST.mp3
-134:Albums/Kitaro - The Classics Collection ｜ Volume 2.mp3
-135:Albums/Lesiëm ‎- Mystic Spirit Voices (1999) [Full Album].mp3
-136:Albums/Metal Gear Solid (PS1⧸PC) Complete Soundtrack.mp3
-137:Albums/Powerwolf Greatest Hits Playlist 2022.mp3
-138:Albums/PS1 MediEvil 2 Full Soundtrack (Complete OST).mp3
-139:Albums/SIRENIA - Dim Days Of Dolor (Official Video)  Napalm Records.mp3
-140:Albums/SIRENIA - Into The Night (Official Video)  Napalm Records.mp3
-141:Albums/SIRENIA - My Mind's Eye (OFFICIAL MUSIC VIDEO).mp3
-142:Albums/SIRENIA - The 12th Hour (Official Lyric Video)  Napalm Records.mp3
-143:Albums/SIRENIA - The Other Side (OFFICIAL MUSIC VIDEO).mp3
-144:Albums/SIRENIA - The Path To Decay (OFFICIAL MUSIC VIDEO).mp3
-145:Albums/Star Wars EPIC Music Compilation.mp3
-146:Albums/Steampunk & Fantasy Music Collection by Luis Humanoide ｜ 1-hour mix ｜ Music from the Clockwork Lands.mp3
-147:Albums/Tarja - I Walk Alone (Video Single Version).mp3
-148:Albums/Tarja - Until My Last Breath.mp3
-149:Albums/Tarja Angels (Within Temptation cover).mp3
-150:Albums/The best OF YANNI-YANNI Greatest Hits FULL Album 2020- Yanni Piano Playlist.mp3
-151:Albums/The Hollies - The Air That I Breathe ｜ Godzilla vs. Kong OST.mp3
-152:Albums/The Music of Command & Conquer  [album].mp3
-153:Albums/Two Steps From Hell & Thomas Bergersen - 36 Tracks Best of All time ｜ Most Powerful Epic Music Mix.mp3
-154:Albums/Vagrant story full ost.mp3
-155:Albums/VISIONS OF ATLANTIS - The Deep & The Dark (Official Video)  Napalm Records.mp3
-156:Albums/Xandria   — The Wonders Still Awaiting  (2023) (Full Album).mp3
-157:Albums/Xandria - Come With Me (With Lyrics).mp3
-158:Albums/Xandria - Dreamkeeper (With Lyrics).mp3
-159:Albums/惡魔城X 月下夜想曲 BGM【Castlevania Symphony of the Night OST】.mp3
-160:Albums/The Greatest Show on Earth.mp3
-161:Albums/Lost Northern Star.mp3
+0:Albums/All Sith Themes 1 Hour.mp3
+1:Albums/Baroque Music - History of Baroque Music.webm
+2:Albums/Come A Little Bit Closer - Jay & The Americans ｜ TV Spot [Guardians of the Galaxy Volume 2].mp3
+3:Albums/E NOMINE Die Prophezeiung.mp3
+4:generals перезарядка.MP3
+5:Albums/Ghost of Tsushima ｜ Full Soundtrack.mp3
 playlist_end
