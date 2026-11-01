@@ -1,6 +1,6 @@
 
 pkgname=postman-bin
-pkgver=12.33.4
+pkgver=12.34.4
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
@@ -42,7 +42,7 @@ source=(
     "postman-${pkgver}-linux-${arch[0]}.tar.gz::https://dl.pstmn.io/download/version/${pkgver}/linux64"
     "postman.desktop"
 )
-sha256sums=('6f6b88c74caf41b025c6035b0439b23cc63041758b894ff93c23af709fb5efaf'
+sha256sums=('31a177c057d0c92e4a8e229ec494859d37e1daa4f521f0d78ca35812f75708d2'
             '6cc2a41f51b8722f541dc00c87c012129956bef75a74b81f5542c09e9098eb60')
 package() {
   install -dm755 "${pkgdir}/opt/"

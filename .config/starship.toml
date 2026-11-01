@@ -1,24 +1,40 @@
+palette = "gruvbox_dark"
+
 format = """
-[](#282828)\
+[](fg:bg0)\
 $shell\
 $php\
 $python\
 $username\
-[](bg:#504945 fg:#282828)\
+[](bg:bg2 fg:bg0)\
 $directory\
-[](fg:#504945 bg:#7c6f64)\
+[](fg:bg2 bg:bg3)\
 $git_branch\
 $git_status\
-[](fg:#7c6f64 bg:#86BBD8)\
-[](fg:#86BBD8 bg:#06969A)\
+[](fg:bg3 bg:aqua)\
 $docker_context\
-[](fg:#06969A bg:#458588)\
+[](fg:aqua bg:blue)\
 $time\
-[ ](fg:#458588)\
+[ ](fg:blue)\
 """
 
+[palettes.gruvbox_dark]
+bg0    = "#282828"
+bg1    = "#3c3836"
+bg2    = "#504945"
+bg3    = "#665c54"
+bg4    = "#7c6f64"
+fg0    = "#fbf1c7"
+fg1    = "#ebdbb2"
+red    = "#cc241d"
+green  = "#b8bb26"
+yellow = "#fabd2f"
+blue   = "#458588"
+aqua   = "#689d6a"
+orange = "#d65d0e"
+
 [shell]
-style = "bg:#282828 fg:#cc241d"
+style = "bg:bg0 fg:red"
 disabled = false
 bash_indicator = ' '
 fish_indicator = '󰈺 '
@@ -27,12 +43,12 @@ format = '[$indicator ]($style)'
 
 [username]
 show_always = true
-style_user = "bg:#282828 fg:#cc241d bold"
-style_root = "bg:#282828  fg:#cc241d bold"
+style_user = "bg:bg0 fg:red bold"
+style_root = "bg:bg0 fg:orange bold"
 format = '[$user ]($style)'
 
 [directory]
-style = "bg:#504945 fg:#fabd2f bold"
+style = "bg:bg2 fg:yellow bold"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -45,29 +61,29 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#7c6f64 fg:#b8bb26 bold"
+style = "bg:bg3 fg:green bold"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#7c6f64 fg:#b8bb26 bold"
+style = "bg:bg3 fg:orange bold"
 format = '[$all_status$ahead_behind ]($style)'
 
 [docker_context]
 symbol = " "
-style = "bg:#06969A"
+style = "bg:aqua fg:bg0"
 format = '[ $symbol $context ]($style)$path'
 
 [python]
-style = "bg:#282828 fg:#cc241d bold"
+style = "bg:bg0 fg:yellow bold"
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [php]
-style = "bg:#282828 fg:#cc241d bold"
+style = "bg:bg0 fg:orange bold"
 format = '[$symbol($version )]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#458588 fg:#fbf1c7 bold"
+style = "bg:blue fg:fg0 bold"
 format = '[ $time ]($style)'
 

@@ -2,6 +2,7 @@ local home = os.getenv("HOME")
 
 hl.on("hyprland.start", function()
     hl.dispatch(hl.dsp.focus({ monitor = "eDP-1" }))
+    --[==[
     local lock = home .. "/.config/hypr/scripts/lock.sh"
     local swayidle = table.concat({
         "swayidle -w",
@@ -11,6 +12,8 @@ hl.on("hyprland.start", function()
         "timeout 900 'systemctl suspend'",
         "before-sleep '" .. lock .. "'",
     }, " ")
+    ]==]--
+    local hypridle = "hypridle"
     local cmds = {
         "waybar -c " .. home .. "/.config/hypr/waybar/config.jsonc -s " .. home .. "/.config/hypr/waybar/style.css",
         "sleep 2 && udiskie -t --no-menu-checkbox-workaround",
@@ -21,7 +24,7 @@ hl.on("hyprland.start", function()
         "flameshot",
         "gammastep-indicator -c " .. home .. "/.config/gammastep/config_wayland.ini",
         "sudo balance.sh",
-        swayidle,
+        hypridle,
         -- "wl-paste --watch cliphist -max-items 10 store",
     }
 

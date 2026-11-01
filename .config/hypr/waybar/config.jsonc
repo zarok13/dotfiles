@@ -100,9 +100,9 @@
 	},
     "hyprland/language": {
         "format": "{short}",
-        "format-en": "EN",
-        "format-ru": "RU",
-        "format-ge": "GE",
+        "format-English": "EN",
+        "format-Russian": "RU",
+        "format-Georgian": "GE",
         "tooltip": false,
         "on-click": "hyprctl switchxkblayout all next"
     },
@@ -347,9 +347,9 @@
     },
     "hyprland/language": {
         "format": "{short}",
-        "format-en": "EN",
-        "format-ru": "RU",
-        "format-ge": "GE",
+        "format-English": "EN",
+        "format-Russian": "RU",
+        "format-Georgian": "GE",
         "tooltip": false,
         "on-click": "hyprctl switchxkblayout all next"
     },

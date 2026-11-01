@@ -1,7 +1,7 @@
 
 pkgbase=rustdesk-bin
 pkgname=(rustdesk-bin)
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Remote desktop written in rust"
 url="https://github.com/rustdesk/rustdesk"
@@ -28,7 +28,7 @@ optdepends=(
 makedepends=('git')
 options=('!strip' '!lto' '!debug')
 source=("${pkgbase%-bin}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::$url/releases/download/${pkgver/_/-}/rustdesk-${pkgver/_/-}-0-x86_64.pkg.tar.zst")
-sha256sums=('e920621899aeaa18c6e7e23b2b565615e7dc957dc987494795ca7a94c3108d7d')
+sha256sums=('af882856f36ff05d1847a1e7f4e61d3baa7b1fe67d94112c4dea636968a30145')
 
 pkgver() {
   git ls-remote --tags --refs https://github.com/rustdesk/rustdesk.git \

@@ -18,7 +18,7 @@ hl.config({
     },
 
     cursor = {
-        inactive_timeout = 30,  -- seconds (sway used 30000 ms)
+        inactive_timeout = 20,  -- seconds (sway used 30000 ms)
     },
 })
 

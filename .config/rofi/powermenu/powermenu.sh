@@ -106,9 +106,11 @@ chosen="$(run_rofi)"
 case ${chosen} in
     $lock)
         if [[ -n "$WAYLAND_DISPLAY" ]]; then
-            if [[ -x '/usr/bin/swaylock' ]]; then
                 mpc -q pause
+            if [[ "$DESKTOP_SESSION" == 'sway' ]]; then
                 lock_screen
+            elif [[ "$DESKTOP_SESSION" == 'hyprland' ]]; then
+                hyprlock
             fi
         else
             if [[ -x '/usr/bin/betterlockscreen' ]]; then
