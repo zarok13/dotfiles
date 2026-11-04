@@ -24,6 +24,11 @@ hl.bind(mod .. " + SHIFT + Right", hl.dsp.workspace.swap_monitors({ monitor1 = "
 -- Move container to next monitor
 hl.bind(mod .. " + SHIFT + 0", hl.dsp.window.move({ monitor = "+1" }))
 
+-- awww wallpaper cycle
+hl.bind(mod .. " + SHIFT + P", hl.dsp.exec_cmd("~/.config/hypr/scripts/wallpaper-cycle.sh prev"))
+hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_cmd("~/.config/hypr/scripts/wallpaper-cycle.sh next"))
+hl.bind(mod .. " + SHIFT + I", hl.dsp.exec_cmd("~/.config/hypr/scripts/wallpaper-cycle.sh random"))
+
 ----------------------------------------------------------------
 -- Focus (arrows and vim keys)
 ----------------------------------------------------------------
