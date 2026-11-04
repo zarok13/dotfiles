@@ -4,3 +4,7 @@
 *.zip
 *.deb
 src/
+*/mpd/mpd.log
+*/mpd/mpd.db
+*/mpd/mpdstate
+

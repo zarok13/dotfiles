@@ -17,7 +17,8 @@ hl.on("hyprland.start", function()
     local cmds = {
         "waybar -c " .. home .. "/.config/hypr/waybar/config.jsonc -s " .. home .. "/.config/hypr/waybar/style.css",
         "sleep 2 && udiskie -t --no-menu-checkbox-workaround",
-        "swaybg -i " .. home .. "/Pictures/wallpapers3/forest-vector-wallpapers.jpg -m fill",
+        --"swaybg -i " .. home .. "/Pictures/wallpapers3/forest-vector-wallpapers.jpg -m fill",
+        "hyprpaper",
         "firewall-applet",
         "lxpolkit",
         "conky -c " .. home .. "/.config/hypr/conky/conky.conf",

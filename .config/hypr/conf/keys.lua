@@ -44,10 +44,13 @@ hl.config({
     master = {
         orientation = "left",   -- master on the right, stack on the left
         new_status = "slave",
+        mfact = 0.70
     },
 })
-hl.bind(mod .. " + Tab", hl.dsp.window.cycle_next())
-hl.bind(mod .. " + SHIFT + Tab", hl.dsp.layout("swapwithmaster master")) --master only
+--hl.bind(mod .. " + Tab", hl.dsp.window.cycle_next())
+--hl.bind(mod .. " + SHIFT + Tab", hl.dsp.layout("swapwithmaster master")) --master only
+hl.bind(mod .. " + Tab", hl.dsp.layout("swapwithmaster master")) --master only
+
 
 hl.bind(mod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
 hl.bind(mod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
