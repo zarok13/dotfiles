@@ -1,0 +1,37 @@
+[plugins]
+enabled = ["yocraft/custom-shortcut", "me/powerprofile"]
+
+[plugin_settings."yocraft/custom-shortcut"]
+label = "Power Profile"
+icon = "bolt"
+onclick_cmd = "~/.config/rofi/powermenu/powerprofile.sh"
+
+[[plugins.source]]
+name = "mine"
+kind = "path"
+location = "~/.config/noctalia/plugins"
+
+[widget.powerprofile]
+type = "me/powerprofile:powerprofile"
+
+[control_center]
+show_shortcut_labels = false
+
+[[control_center.shortcuts]]
+type = "wifi"
+
+[[control_center.shortcuts]]
+type = "bluetooth"
+
+[[control_center.shortcuts]]
+type = "caffeine"
+
+[[control_center.shortcuts]]
+type = "nightlight"
+
+[[control_center.shortcuts]]
+type = "notification"
+
+[[control_center.shortcuts]]
+type = "yocraft/custom-shortcut:shortcut"
+

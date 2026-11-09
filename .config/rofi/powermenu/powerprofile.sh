@@ -41,6 +41,10 @@ run_cmd() {
 		elif [[ $1 == '--turbo' ]]; then
             sudo turbo.sh
 		fi
+        if pgrep -x noctalia >/dev/null 2>&1; then
+            sleep 0.3
+            noctalia msg plugin me/powerprofile:powerprofile all refresh >/dev/null 2>&1
+        fi
 	else
 		exit 0
 	fi

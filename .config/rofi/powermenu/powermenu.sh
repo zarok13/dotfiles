@@ -94,7 +94,7 @@ run_cmd() {
             elif [[ "$DESKTOP_SESSION" == 'sway' ]]; then
                 swaymsg exit
             elif [[ "$DESKTOP_SESSION" == 'hyprland' ]]; then
-                hyprctl dispatch exit
+                hyprctl dispatch 'hl.dsp.exit()'
 			fi
 		fi
 	else
