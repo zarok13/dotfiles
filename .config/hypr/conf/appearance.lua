@@ -76,3 +76,14 @@ hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, bezier = "
 hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
+
+-- Workspace icons --
+hl.workspace_rule({ workspace = 1, persistent = false, default_name = "󰈹" })
+hl.workspace_rule({ workspace = 2, persistent = false, default_name = "󰢹" })
+hl.workspace_rule({ workspace = 3, persistent = false, default_name = "󰙯" })
+hl.workspace_rule({ workspace = 4, persistent = false, default_name = "󰆍" })
+hl.workspace_rule({ workspace = 5, persistent = false, default_name = "󰖟" })
+hl.workspace_rule({ workspace = 6, persistent = false, default_name = "󰇩" })
+hl.workspace_rule({ workspace = 7, persistent = false, default_name = "󰚗" })
+hl.workspace_rule({ workspace = 8, persistent = false, default_name = "" })
+hl.workspace_rule({ workspace = 9, persistent = false, default_name = "󰒓" })

@@ -5,7 +5,7 @@ local CYCLE_SCRIPT     = home .. "/.config/hypr/scripts/wallpaper-cycle.sh"
 
 hl.on("hyprland.start", function()
     hl.dispatch(hl.dsp.focus({ monitor = "eDP-1" }))
-    local hypridle = "hypridle"
+    --local hypridle = "hypridle"
     local cmds = {
         --"waybar -c " .. home .. "/.config/hypr/waybar/config.jsonc -s " .. home .. "/.config/hypr/waybar/style.css",
         "noctalia",
@@ -20,7 +20,7 @@ hl.on("hyprland.start", function()
         "flameshot",
         --"gammastep-indicator -c " .. home .. "/.config/gammastep/config_wayland.ini",
         "sudo balance.sh",
-        hypridle,
+        --hypridle,
         -- "wl-paste --watch cliphist -max-items 10 store",
     }
 

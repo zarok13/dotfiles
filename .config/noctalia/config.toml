@@ -35,3 +35,7 @@ type = "notification"
 [[control_center.shortcuts]]
 type = "yocraft/custom-shortcut:shortcut"
 
+[widget.workspaces]
+show_labels = true
+label_source = "name"
+max_label_chars = 2
